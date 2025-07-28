@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Home, User, FileText, Briefcase, Mail } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +42,7 @@ const Navigation = () => {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 hidden md:block">
+      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 hidden lg:block">
         <div className="glass-card px-6 py-3">
           <div className="flex items-center gap-6">
             {navItems.map((item) => (
@@ -62,34 +63,48 @@ const Navigation = () => {
         </div>
       </nav>
 
-      {/* Mobile Navigation Button */}
-      <Button
-        variant="outline"
-        size="icon"
-        className="fixed top-6 right-6 z-50 md:hidden glass-card"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-      </Button>
+      {/* Mobile Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 lg:hidden">
+        <div className="glass-card m-4 mb-0 rounded-2xl">
+          <div className="flex items-center justify-between p-4">
+            <h1 className="text-lg font-bold neon-text">Priyanshu</h1>
+            
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <Button
+                variant="outline"
+                size="icon"
+                className="glass-card"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Desktop Theme Toggle */}
+      <div className="fixed top-4 right-4 z-50 hidden lg:block">
+        <ThemeToggle />
+      </div>
 
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="fixed inset-0 z-40 md:hidden">
+        <div className="fixed inset-0 z-40 lg:hidden">
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
-          <div className="absolute top-20 right-6 glass-card p-6 min-w-[200px]">
+          <div className="absolute top-20 left-4 right-4 glass-card p-6 rounded-2xl max-h-[80vh] overflow-y-auto">
             <div className="space-y-2">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
-                    activeSection === item.id
-                      ? 'bg-gradient-primary text-primary-foreground shadow-glow'
-                      : 'hover:bg-muted hover:shadow-glow-secondary'
+                  className={`mobile-nav-item ${
+                    activeSection === item.id ? 'active' : ''
                   }`}
                 >
-                  <item.icon className="h-4 w-4" />
-                  <span className="font-medium">{item.label}</span>
+                  <item.icon className="h-5 w-5" />
+                  <span className="font-medium text-lg">{item.label}</span>
                 </button>
               ))}
             </div>

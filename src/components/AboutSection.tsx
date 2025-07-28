@@ -34,32 +34,33 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden">
+    <section id="about" className="mobile-section relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 gradient-bg-secondary opacity-5"></div>
       
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold mb-4">
+      <div className="mobile-container mx-auto">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="mobile-heading mb-4">
             <span className="neon-text-glow">About Me</span>
           </h2>
-          <p className="text-xl text-muted-foreground">Passionate developer with a love for innovation</p>
+          <p className="mobile-subheading text-muted-foreground">Passionate developer with a love for innovation</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Skills */}
-          <div className="space-y-6 animate-slide-in-left">
-            <h3 className="text-3xl font-bold mb-8 neon-text">Technical Skills</h3>
+        {/* Mobile-first layout: Stack vertically, then side-by-side */}
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-12 items-start">
+          {/* Skills Section - stacked on mobile */}
+          <div className="w-full space-y-6 animate-slide-in-left order-2 lg:order-1">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 neon-text text-center lg:text-left">Technical Skills</h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {skills.map((skill, index) => (
                 <div key={skill.name} className="space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <skill.icon className="h-5 w-5 text-primary" />
-                      <span className="font-medium">{skill.name}</span>
+                      <skill.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                      <span className="font-medium text-sm sm:text-base">{skill.name}</span>
                     </div>
-                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                    <span className="text-xs sm:text-sm text-muted-foreground">{skill.level}%</span>
                   </div>
                   
                   <div className="skill-bar">
@@ -76,20 +77,20 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Right Side - Bio */}
-          <div className="animate-slide-in-right">
-            <Card className="glass-card p-8 space-y-6">
+          {/* Bio Section - centered circular image on mobile */}
+          <div className="w-full animate-slide-in-right order-1 lg:order-2">
+            <Card className="glass-card p-6 sm:p-8 space-y-6">
               <div className="text-center mb-6">
-                <div className="w-32 h-32 mx-auto rounded-full bg-gradient-primary p-1 mb-4">
+                <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full bg-gradient-primary p-1 mb-4">
                   <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                    <span className="text-4xl font-bold neon-text">P</span>
+                    <span className="text-2xl sm:text-4xl font-bold neon-text">P</span>
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold neon-text">Priyanshu</h3>
-                <p className="text-muted-foreground">Full Stack Developer</p>
+                <h3 className="text-xl sm:text-2xl font-bold neon-text">Priyanshu</h3>
+                <p className="text-sm sm:text-base text-muted-foreground">Full Stack Developer</p>
               </div>
 
-              <div className="space-y-4 text-muted-foreground">
+              <div className="space-y-3 sm:space-y-4 text-muted-foreground text-sm sm:text-base">
                 <p>
                   I'm a passionate BCA student at ITM University with a deep love for technology 
                   and innovation. My journey in programming started with curiosity and has evolved 
@@ -102,7 +103,7 @@ const AboutSection = () => {
                   interested in AI/ML and how it can enhance user experiences.
                 </p>
                 
-                <p>
+                <p className="hidden sm:block">
                   When I'm not coding, you'll find me exploring new technologies, contributing 
                   to open source projects, or sharing knowledge with the developer community.
                 </p>
@@ -110,12 +111,12 @@ const AboutSection = () => {
 
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
                 <div className="text-center">
-                  <div className="text-2xl font-bold neon-text">20+</div>
-                  <div className="text-sm text-muted-foreground">Projects</div>
+                  <div className="text-xl sm:text-2xl font-bold neon-text">20+</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Projects</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold neon-text">2+</div>
-                  <div className="text-sm text-muted-foreground">Years Experience</div>
+                  <div className="text-xl sm:text-2xl font-bold neon-text">2+</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Years Experience</div>
                 </div>
               </div>
             </Card>
