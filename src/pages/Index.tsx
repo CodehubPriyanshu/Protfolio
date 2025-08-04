@@ -4,22 +4,19 @@ import AboutSection from "@/components/AboutSection";
 import ResumeSection from "@/components/ResumeSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
+import AnimatedBackground from "@/components/AnimatedBackground";
+import FloatingIcons from "@/components/FloatingIcons";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      {/* Enhanced Animated Background */}
+      <AnimatedBackground />
+
+      {/* Floating Icons System */}
+      <FloatingIcons />
+
       <Navigation />
-      
-      {/* Background grid pattern */}
-      <div className="fixed inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(126, 34, 206, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(126, 34, 206, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px'
-        }} />
-      </div>
 
       <main className="relative z-10">
         <HeroSection />

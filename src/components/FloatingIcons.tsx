@@ -1,0 +1,142 @@
+import { useEffect, useState } from 'react';
+import { 
+  Github, 
+  Code2, 
+  Database, 
+  Brain, 
+  Rocket, 
+  Cloud, 
+  BarChart3, 
+  Cpu, 
+  Globe, 
+  Zap 
+} from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
+interface FloatingIcon {
+  id: number;
+  icon: React.ComponentType<any>;
+  label: string;
+  url: string;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  delay: number;
+}
+
+const FloatingIcons = () => {
+  const [icons, setIcons] = useState<FloatingIcon[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  const iconData = [
+    { icon: Github, label: "GitHub", url: "https://github.com" },
+    { icon: Code2, label: "Web Development", url: "https://developer.mozilla.org" },
+    { icon: Database, label: "Data Analysis", url: "https://pandas.pydata.org" },
+    { icon: Brain, label: "AI & Machine Learning", url: "https://tensorflow.org" },
+    { icon: Rocket, label: "Innovation", url: "https://www.spacex.com" },
+    { icon: Cloud, label: "Cloud Computing", url: "https://aws.amazon.com" },
+    { icon: BarChart3, label: "Data Visualization", url: "https://d3js.org" },
+    { icon: Cpu, label: "Computer Science", url: "https://www.acm.org" },
+    { icon: Globe, label: "Web Technologies", url: "https://www.w3.org" },
+    { icon: Zap, label: "Performance", url: "https://web.dev" },
+  ];
+
+  useEffect(() => {
+    setMounted(true);
+    
+    // Initialize floating icons with random positions and velocities
+    const initialIcons: FloatingIcon[] = iconData.map((data, index) => ({
+      id: index,
+      ...data,
+      x: Math.random() * 80 + 10, // Keep icons within 10-90% of screen
+      y: Math.random() * 80 + 10,
+      vx: (Math.random() - 0.5) * 0.3, // Slower movement
+      vy: (Math.random() - 0.5) * 0.3,
+      size: Math.random() * 8 + 16, // Size between 16-24px
+      delay: index * 0.5, // Staggered animation delays
+    }));
+    
+    setIcons(initialIcons);
+
+    // Animate icons
+    const animateIcons = () => {
+      setIcons(prev => prev.map(icon => {
+        let newX = icon.x + icon.vx;
+        let newY = icon.y + icon.vy;
+        let newVx = icon.vx;
+        let newVy = icon.vy;
+
+        // Bounce off edges
+        if (newX <= 5 || newX >= 95) {
+          newVx = -newVx;
+          newX = Math.max(5, Math.min(95, newX));
+        }
+        if (newY <= 5 || newY >= 95) {
+          newVy = -newVy;
+          newY = Math.max(5, Math.min(95, newY));
+        }
+
+        return {
+          ...icon,
+          x: newX,
+          y: newY,
+          vx: newVx,
+          vy: newVy,
+        };
+      }));
+    };
+
+    const interval = setInterval(animateIcons, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleIconClick = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  if (!mounted) return null;
+
+  return (
+    <TooltipProvider>
+      <div className="fixed inset-0 pointer-events-none z-20 overflow-hidden">
+        {icons.map((icon) => {
+          const IconComponent = icon.icon;
+          return (
+            <Tooltip key={icon.id}>
+              <TooltipTrigger asChild>
+                <div
+                  className="absolute pointer-events-auto cursor-pointer floating-icon"
+                  style={{
+                    left: `${icon.x}%`,
+                    top: `${icon.y}%`,
+                    animationDelay: `${icon.delay}s`,
+                  }}
+                  onClick={() => handleIconClick(icon.url)}
+                >
+                  <div className="floating-icon-wrapper group">
+                    <IconComponent 
+                      size={icon.size}
+                      className="floating-icon-svg transition-all duration-300 group-hover:scale-125 group-active:scale-95"
+                    />
+                    <div className="floating-icon-glow" />
+                  </div>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent 
+                side="top" 
+                className="glass-card text-xs font-medium"
+                sideOffset={8}
+              >
+                {icon.label}
+              </TooltipContent>
+            </Tooltip>
+          );
+        })}
+      </div>
+    </TooltipProvider>
+  );
+};
+
+export default FloatingIcons;

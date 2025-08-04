@@ -23,19 +23,34 @@ const ThemeToggle = () => {
     <Button
       variant="outline"
       size="icon"
-      className="glass-card hover:shadow-glow transition-all duration-300 relative overflow-hidden group"
+      className="glass-card hover:shadow-glow-strong transition-all duration-500 relative overflow-hidden group theme-toggle"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
-      <div className="relative">
-        {theme === 'dark' ? (
-          <Sun className="h-4 w-4 rotate-0 scale-100 transition-all duration-300 group-hover:text-yellow-500" />
-        ) : (
-          <Moon className="h-4 w-4 rotate-0 scale-100 transition-all duration-300 group-hover:text-blue-400" />
-        )}
+      <div className="relative w-4 h-4">
+        {/* Sun icon */}
+        <Sun
+          className={`absolute inset-0 h-4 w-4 transition-all duration-500 ${
+            theme === 'dark'
+              ? 'rotate-0 scale-100 opacity-100 text-yellow-500'
+              : 'rotate-90 scale-0 opacity-0'
+          }`}
+        />
+
+        {/* Moon icon */}
+        <Moon
+          className={`absolute inset-0 h-4 w-4 transition-all duration-500 ${
+            theme === 'light'
+              ? 'rotate-0 scale-100 opacity-100 text-blue-400'
+              : '-rotate-90 scale-0 opacity-0'
+          }`}
+        />
       </div>
-      
-      {/* Ripple effect on click */}
-      <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-active:opacity-20 group-active:animate-ripple"></div>
+
+      {/* Enhanced ripple effect on click */}
+      <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-active:opacity-30 group-active:animate-ripple transition-opacity duration-300"></div>
+
+      {/* Glow effect */}
+      <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-primary/20 to-accent-glow/20 blur-sm"></div>
     </Button>
   );
 };

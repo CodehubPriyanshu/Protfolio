@@ -37,14 +37,14 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "priyanshu.dev@email.com",
-      href: "mailto:priyanshu.dev@email.com"
+      value: "priyanshu.bca2025@email.com",
+      href: "priyanshu.bca2025@email.com"
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+91 98765 43210",
-      href: "tel:+919876543210"
+      value: "+91 8602062785",
+      href: "tel:+918602062785"
     },
     {
       icon: MapPin,
@@ -91,82 +91,88 @@ const ContactSection = () => {
         </div>
 
         <div className="max-w-6xl mx-auto">
-          {/* Mobile-first layout: Stack vertically, then side-by-side */}
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-12">
-            {/* Contact Information */}
-            <div className="space-y-6 sm:space-y-8 animate-slide-in-left order-2 lg:order-1">
-              <Card className="glass-card">
-                <CardHeader>
+          {/* Enhanced two-card layout: side-by-side on desktop, stacked on mobile */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+
+            {/* Get in Touch Card - Enhanced with glowing border */}
+            <div className="animate-slide-in-left">
+              <Card className="glass-card contact-card h-full">
+                <CardHeader className="pb-6">
                   <CardTitle className="flex items-center gap-3 text-xl sm:text-2xl">
-                    <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+                    <div className="bg-gradient-primary rounded-full p-2 shadow-glow">
+                      <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
+                    </div>
                     Get in Touch
                   </CardTitle>
                   <CardDescription className="text-sm sm:text-base">
                     I'm always excited to discuss new opportunities and collaborate on interesting projects.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4 sm:space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-center gap-3 sm:gap-4 group">
-                      <div className="bg-gradient-primary rounded-full p-2 sm:p-3 group-hover:shadow-glow transition-all duration-300">
-                        <info.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="text-xs sm:text-sm text-muted-foreground">{info.label}</div>
-                        <a 
-                          href={info.href}
-                          className="font-medium hover:neon-text transition-all duration-300 text-sm sm:text-base break-all"
-                        >
-                          {info.value}
-                        </a>
-                      </div>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
 
-              {/* Social Links */}
-              <Card className="glass-card">
-                <CardHeader>
-                  <CardTitle className="text-lg sm:text-xl">Follow Me</CardTitle>
-                  <CardDescription className="text-sm sm:text-base">
-                    Stay connected and follow my journey in tech
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex gap-3 sm:gap-4 justify-center sm:justify-start">
-                    {socialLinks.map((social, index) => (
-                      <a
-                        key={index}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group"
-                      >
-                        <div className="bg-muted rounded-full p-3 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110 group-active:scale-95">
-                          <social.icon className={`h-4 w-4 sm:h-5 sm:w-5 transition-colors duration-300 ${social.color}`} />
+                <CardContent className="space-y-6">
+                  {/* Contact Information */}
+                  <div className="space-y-4">
+                    {contactInfo.map((info, index) => (
+                      <div key={index} className="flex items-center gap-4 group contact-info-item">
+                        <div className="bg-gradient-primary rounded-full p-3 group-hover:shadow-glow-strong transition-all duration-300 group-hover:scale-110">
+                          <info.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
                         </div>
-                      </a>
+                        <div className="min-w-0 flex-1">
+                          <div className="text-xs sm:text-sm text-muted-foreground font-medium">{info.label}</div>
+                          <a
+                            href={info.href}
+                            className="font-semibold hover:neon-text transition-all duration-300 text-sm sm:text-base break-all"
+                          >
+                            {info.value}
+                          </a>
+                        </div>
+                      </div>
                     ))}
+                  </div>
+
+                  {/* Social Links Section */}
+                  <div className="pt-4 border-t border-border/50">
+                    <h4 className="text-lg font-semibold mb-4">Follow My Journey</h4>
+                    <div className="flex gap-4 justify-start">
+                      {socialLinks.map((social, index) => (
+                        <a
+                          key={index}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group social-link"
+                        >
+                          <div className="bg-muted rounded-full p-3 group-hover:shadow-glow-strong transition-all duration-300 group-hover:scale-110 group-active:scale-95 border border-border/20 group-hover:border-primary/50">
+                            <social.icon className={`h-5 w-5 transition-colors duration-300 ${social.color}`} />
+                          </div>
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
             </div>
 
-            {/* Contact Form */}
-            <div className="animate-slide-in-right order-1 lg:order-2">
-              <Card className="glass-card">
-                <CardHeader>
-                  <CardTitle className="text-xl sm:text-2xl">Send a Message</CardTitle>
+            {/* Send a Message Card - Enhanced with glowing border */}
+            <div className="animate-slide-in-right">
+              <Card className="glass-card contact-card h-full">
+                <CardHeader className="pb-6">
+                  <CardTitle className="flex items-center gap-3 text-xl sm:text-2xl">
+                    <div className="bg-gradient-primary rounded-full p-2 shadow-glow">
+                      <Send className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
+                    </div>
+                    Send a Message
+                  </CardTitle>
                   <CardDescription className="text-sm sm:text-base">
                     Have a project in mind? Let's discuss how we can work together.
                   </CardDescription>
                 </CardHeader>
+
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="name" className="text-sm">Name</Label>
+                        <Label htmlFor="name" className="text-sm font-medium">Name</Label>
                         <Input
                           id="name"
                           name="name"
@@ -178,7 +184,7 @@ const ContactSection = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-sm">Email</Label>
+                        <Label htmlFor="email" className="text-sm font-medium">Email</Label>
                         <Input
                           id="email"
                           name="email"
@@ -191,9 +197,9 @@ const ContactSection = () => {
                         />
                       </div>
                     </div>
-                    
+
                     <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-sm">Subject</Label>
+                      <Label htmlFor="subject" className="text-sm font-medium">Subject</Label>
                       <Input
                         id="subject"
                         name="subject"
@@ -204,22 +210,22 @@ const ContactSection = () => {
                         required
                       />
                     </div>
-                    
+
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-sm">Message</Label>
+                      <Label htmlFor="message" className="text-sm font-medium">Message</Label>
                       <Textarea
                         id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
                         placeholder="Tell me about your project or idea..."
-                        rows={4}
+                        rows={5}
                         className="mobile-form-input resize-none"
                         required
                       />
                     </div>
-                    
-                    <Button type="submit" className="btn-neon w-full text-base sm:text-lg py-4 sm:py-6">
+
+                    <Button type="submit" className="btn-neon w-full text-base sm:text-lg py-4 sm:py-6 shadow-glow-strong">
                       <Send className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                       Send Message
                     </Button>

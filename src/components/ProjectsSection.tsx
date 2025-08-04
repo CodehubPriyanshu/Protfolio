@@ -79,64 +79,72 @@ const ProjectsSection = () => {
           <p className="mobile-subheading text-muted-foreground">Innovative solutions built with modern technologies</p>
         </div>
 
-        {/* Mobile-responsive grid: 1 column on mobile, 2 on tablet, 3 on desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        {/* Mobile-optimized grid: 2 columns on mobile, 3 on desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
           {projects.map((project, index) => (
-            <Card 
-              key={project.id} 
-              className={`project-card ${
+            <Card
+              key={project.id}
+              className={`project-card group aspect-[4/5] ${
                 project.featured ? 'ring-2 ring-primary/20' : ''
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardHeader className="relative">
+              <CardHeader className="relative p-3 sm:p-4 lg:p-6 pb-2 sm:pb-3">
                 {project.featured && (
-                  <div className="absolute -top-2 -right-2">
-                    <div className="bg-gradient-primary rounded-full p-1.5 sm:p-2">
-                      <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-primary-foreground" />
+                  <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2">
+                    <div className="bg-gradient-primary rounded-full p-1 sm:p-1.5 lg:p-2">
+                      <Zap className="h-2.5 w-2.5 sm:h-3 sm:w-3 lg:h-4 lg:w-4 text-primary-foreground" />
                     </div>
                   </div>
                 )}
-                
-                <CardTitle className="text-lg sm:text-xl group-hover:neon-text transition-all duration-300">
+
+                <CardTitle className="text-sm sm:text-base lg:text-lg xl:text-xl group-hover:neon-text transition-all duration-300 line-clamp-2">
                   {project.title}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground text-sm sm:text-base line-clamp-3">
+                <CardDescription className="text-muted-foreground text-xs sm:text-sm lg:text-base line-clamp-2 sm:line-clamp-3">
                   {project.description}
                 </CardDescription>
               </CardHeader>
 
-              <CardContent className="flex-1 flex flex-col justify-between space-y-4">
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {project.techStack.map((tech) => (
-                    <Badge 
-                      key={tech} 
-                      variant="secondary" 
-                      className="glass-card text-xs hover:shadow-glow-secondary transition-all duration-300"
+              <CardContent className="flex-1 flex flex-col justify-between p-3 sm:p-4 lg:p-6 pt-0 space-y-2 sm:space-y-3 lg:space-y-4">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                  {project.techStack.slice(0, 3).map((tech) => (
+                    <Badge
+                      key={tech}
+                      variant="secondary"
+                      className="glass-card text-[10px] sm:text-xs hover:shadow-glow-secondary transition-all duration-300 px-1.5 py-0.5 sm:px-2 sm:py-1"
                     >
                       {tech}
                     </Badge>
                   ))}
+                  {project.techStack.length > 3 && (
+                    <Badge
+                      variant="outline"
+                      className="glass-card text-[10px] sm:text-xs px-1.5 py-0.5 sm:px-2 sm:py-1"
+                    >
+                      +{project.techStack.length - 3}
+                    </Badge>
+                  )}
                 </div>
 
-                <div className="flex gap-2 pt-4">
+                <div className="flex gap-1.5 sm:gap-2 pt-2">
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-xs sm:text-sm"
+                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-[10px] sm:text-xs lg:text-sm px-2 py-1.5 sm:px-3 sm:py-2 h-auto"
                     onClick={() => handleProjectClick(project.githubUrl)}
                   >
-                    <Github className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                    Code
+                    <Github className="h-2.5 w-2.5 sm:h-3 sm:w-3 lg:h-4 lg:w-4 mr-1" />
+                    <span className="hidden sm:inline">Code</span>
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-xs sm:text-sm"
+                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-[10px] sm:text-xs lg:text-sm px-2 py-1.5 sm:px-3 sm:py-2 h-auto"
                     onClick={() => handleProjectClick(project.liveUrl)}
                   >
-                    <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                    Live
+                    <ExternalLink className="h-2.5 w-2.5 sm:h-3 sm:w-3 lg:h-4 lg:w-4 mr-1" />
+                    <span className="hidden sm:inline">Live</span>
                   </Button>
                 </div>
               </CardContent>
