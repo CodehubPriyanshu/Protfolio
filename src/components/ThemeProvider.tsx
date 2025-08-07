@@ -7,10 +7,11 @@ interface ThemeProviderWrapperProps {
 
 const ThemeProviderWrapper = ({ children }: ThemeProviderWrapperProps) => {
   return (
-    <ThemeProvider 
-      attribute="class" 
-      defaultTheme="light" 
-      enableSystem
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="dark"
+      forcedTheme="dark"
+      enableSystem={false}
       disableTransitionOnChange={false}
     >
       {children}

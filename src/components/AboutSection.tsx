@@ -1,4 +1,3 @@
-import { Progress } from "@/components/ui/progress";
 import { Card } from "@/components/ui/card";
 import { Code, Database, Globe, Smartphone, Brain, Server } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -23,14 +22,16 @@ const AboutSection = () => {
   }, []);
 
   const skills = [
-    { name: "React.js", level: 90, icon: Code, color: "from-blue-500 to-cyan-500" },
-    { name: "Python", level: 85, icon: Code, color: "from-green-500 to-blue-500" },
-    { name: "Flask", level: 80, icon: Server, color: "from-red-500 to-pink-500" },
-    { name: "JavaScript", level: 88, icon: Globe, color: "from-yellow-500 to-orange-500" },
-    { name: "Node.js", level: 75, icon: Server, color: "from-green-600 to-green-400" },
-    { name: "MongoDB", level: 82, icon: Database, color: "from-green-500 to-teal-500" },
-    { name: "Mobile Development", level: 70, icon: Smartphone, color: "from-purple-500 to-pink-500" },
-    { name: "AI/ML", level: 78, icon: Brain, color: "from-indigo-500 to-purple-500" },
+    { name: "React.js", icon: Code, color: "from-blue-500 to-cyan-500" },
+    { name: "Python", icon: Code, color: "from-green-500 to-blue-500" },
+    { name: "Flask", icon: Server, color: "from-red-500 to-pink-500" },
+    { name: "JavaScript", icon: Globe, color: "from-yellow-500 to-orange-500" },
+    { name: "Node.js", icon: Server, color: "from-green-600 to-green-400" },
+    { name: "MongoDB", icon: Database, color: "from-green-500 to-teal-500" },
+    { name: "Mobile Development", icon: Smartphone, color: "from-purple-500 to-pink-500" },
+    { name: "AI/ML", icon: Brain, color: "from-indigo-500 to-purple-500" },
+    { name: "TypeScript", icon: Code, color: "from-blue-600 to-blue-400" },
+    { name: "Tailwind CSS", icon: Globe, color: "from-cyan-500 to-blue-500" },
   ];
 
   return (
@@ -48,30 +49,25 @@ const AboutSection = () => {
 
         {/* Mobile-first layout: Stack vertically, then side-by-side */}
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-12 items-start">
-          {/* Skills Section - stacked on mobile */}
+          {/* Skills Section - glowing cards grid */}
           <div className="w-full space-y-6 animate-slide-in-left order-2 lg:order-1">
             <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 neon-text text-center lg:text-left">Technical Skills</h3>
-            
-            <div className="space-y-4 sm:space-y-6">
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
               {skills.map((skill, index) => (
-                <div key={skill.name} className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <skill.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                      <span className="font-medium text-sm sm:text-base">{skill.name}</span>
-                    </div>
-                    <span className="text-xs sm:text-sm text-muted-foreground">{skill.level}%</span>
+                <div
+                  key={skill.name}
+                  className="glass-card p-3 sm:p-4 flex flex-col items-center text-center hover:shadow-[var(--glow-strong)] hover:border-primary/50 transition-all duration-300 group"
+                  style={{
+                    animationDelay: `${index * 100}ms`
+                  }}
+                >
+                  <div className={`p-2 sm:p-3 rounded-full bg-gradient-to-r ${skill.color} mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                    <skill.icon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                   </div>
-                  
-                  <div className="skill-bar">
-                    <div 
-                      className={`skill-progress bg-gradient-to-r ${skill.color}`}
-                      style={{ 
-                        width: isVisible ? `${skill.level}%` : '0%',
-                        transitionDelay: `${index * 100}ms`
-                      }}
-                    />
-                  </div>
+                  <span className="font-medium text-xs sm:text-sm text-foreground group-hover:text-primary transition-colors duration-300">
+                    {skill.name}
+                  </span>
                 </div>
               ))}
             </div>

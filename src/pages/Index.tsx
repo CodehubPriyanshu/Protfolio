@@ -26,16 +26,25 @@ const Index = () => {
         <ContactSection />
       </main>
 
+      {/* Inspirational Quote Section */}
+      <div className="py-12 sm:py-16 text-center relative">
+        <div className="container mx-auto px-6">
+          <p className="text-xl sm:text-2xl lg:text-3xl font-medium neon-text-glow">
+            Transforming data into insight, code into impact.
+          </p>
+        </div>
+      </div>
+
       {/* Footer */}
       <footer className="bg-gradient-primary py-8 relative overflow-hidden">
         <div className="container mx-auto px-6 text-center">
           <div className="text-primary-foreground space-y-4">
-            <h3 className="text-2xl font-bold">Priyanshu</h3>
+            <h3 className="text-2xl font-bold">Priyanshu Kumar</h3>
             <p className="text-primary-foreground/80">
               Full Stack Developer & AI Enthusiast
             </p>
             <p className="text-sm text-primary-foreground/60">
-              © 2024 Priyanshu. Built with React, TypeScript & Tailwind CSS.
+              © 2025 Priyanshu Kumar. Built with React, Tailwind & CSS.
             </p>
           </div>
         </div>

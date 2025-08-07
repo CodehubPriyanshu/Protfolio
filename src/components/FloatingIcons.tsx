@@ -29,6 +29,7 @@ interface FloatingIcon {
 const FloatingIcons = () => {
   const [icons, setIcons] = useState<FloatingIcon[]>([]);
   const [mounted, setMounted] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const iconData = [
     { icon: Github, label: "GitHub", url: "https://github.com" },
@@ -45,19 +46,31 @@ const FloatingIcons = () => {
 
   useEffect(() => {
     setMounted(true);
-    
+
     // Initialize floating icons with random positions and velocities
-    const initialIcons: FloatingIcon[] = iconData.map((data, index) => ({
-      id: index,
-      ...data,
-      x: Math.random() * 80 + 10, // Keep icons within 10-90% of screen
-      y: Math.random() * 80 + 10,
-      vx: (Math.random() - 0.5) * 0.3, // Slower movement
-      vy: (Math.random() - 0.5) * 0.3,
-      size: Math.random() * 8 + 16, // Size between 16-24px
-      delay: index * 0.5, // Staggered animation delays
-    }));
-    
+    // Avoid center area where profile photo is located (30-70% width, 20-80% height)
+    const initialIcons: FloatingIcon[] = iconData.map((data, index) => {
+      let x, y;
+      do {
+        x = Math.random() * 80 + 10; // Keep icons within 10-90% of screen
+        y = Math.random() * 80 + 10;
+      } while (
+        // Avoid profile photo area (center of screen)
+        (x > 30 && x < 70 && y > 20 && y < 80)
+      );
+
+      return {
+        id: index,
+        ...data,
+        x,
+        y,
+        vx: (Math.random() - 0.5) * 0.3, // Slower movement
+        vy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 8 + 16, // Size between 16-24px
+        delay: index * 0.5, // Staggered animation delays
+      };
+    });
+
     setIcons(initialIcons);
 
     // Animate icons
@@ -89,18 +102,35 @@ const FloatingIcons = () => {
     };
 
     const interval = setInterval(animateIcons, 100);
-    return () => clearInterval(interval);
+
+    // Handle scroll to hide icons when not on home screen
+    const handleScroll = () => {
+      const heroSection = document.getElementById('hero');
+      if (heroSection) {
+        const rect = heroSection.getBoundingClientRect();
+        const isHeroVisible = rect.bottom > 100; // Show icons when hero section is mostly visible
+        setIsVisible(isHeroVisible);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const handleIconClick = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  if (!mounted) return null;
+  if (!mounted || !isVisible) return null;
 
   return (
     <TooltipProvider>
-      <div className="fixed inset-0 pointer-events-none z-20 overflow-hidden">
+      <div className="fixed inset-0 pointer-events-none z-20 overflow-hidden transition-opacity duration-500">
         {icons.map((icon) => {
           const IconComponent = icon.icon;
           return (

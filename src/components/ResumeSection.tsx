@@ -5,12 +5,12 @@ import { GraduationCap, Calendar, Award, MapPin } from "lucide-react";
 const ResumeSection = () => {
   const education = [
     {
-      level: "Graduation",
+      level: "Graduated",
       course: "Bachelor of Computer Applications (BCA)",
       institution: "ITM University",
       location: "Gwalior, Madhya Pradesh",
       year: "2022 - 2025",
-      grade: "8.5 CGPA (Current)",
+      grade: "8.5 CGPA",
       achievements: [
         "Dean's List for Academic Excellence",
         "Winner - University Coding Competition 2023",
@@ -97,12 +97,11 @@ const ResumeSection = () => {
                         </div>
                         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
                           <div className="flex items-center gap-1">
-                            <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
-                            {education[0].location}
-                          </div>
-                          <div className="flex items-center gap-1">
                             <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                            {education[0].year}
+                            <span>{education[0].year}</span>
+                            <span className="mx-2">•</span>
+                            <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
+                            <span>{education[0].location}</span>
                           </div>
                         </div>
                       </div>

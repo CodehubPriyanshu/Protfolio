@@ -1,9 +1,19 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink, Zap } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
+import { useState } from "react";
 
 const ProjectsSection = () => {
+  const [expandedSkills, setExpandedSkills] = useState<{ [key: number]: boolean }>({});
+
+  const toggleSkills = (projectId: number) => {
+    setExpandedSkills(prev => ({
+      ...prev,
+      [projectId]: !prev[projectId]
+    }));
+  };
+
   const projects = [
     {
       id: 1,
@@ -80,23 +90,14 @@ const ProjectsSection = () => {
         </div>
 
         {/* Mobile-optimized grid: 2 columns on mobile, 3 on desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className={`project-card group aspect-[4/5] ${
-                project.featured ? 'ring-2 ring-primary/20' : ''
-              }`}
+              className="project-card group h-full flex flex-col"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardHeader className="relative p-3 sm:p-4 lg:p-6 pb-2 sm:pb-3">
-                {project.featured && (
-                  <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2">
-                    <div className="bg-gradient-primary rounded-full p-1 sm:p-1.5 lg:p-2">
-                      <Zap className="h-2.5 w-2.5 sm:h-3 sm:w-3 lg:h-4 lg:w-4 text-primary-foreground" />
-                    </div>
-                  </div>
-                )}
+              <CardHeader className="p-4 sm:p-6 pb-3">{/* Removed charging icon section */}
 
                 <CardTitle className="text-sm sm:text-base lg:text-lg xl:text-xl group-hover:neon-text transition-all duration-300 line-clamp-2">
                   {project.title}
@@ -106,13 +107,13 @@ const ProjectsSection = () => {
                 </CardDescription>
               </CardHeader>
 
-              <CardContent className="flex-1 flex flex-col justify-between p-3 sm:p-4 lg:p-6 pt-0 space-y-2 sm:space-y-3 lg:space-y-4">
-                <div className="flex flex-wrap gap-1 sm:gap-1.5">
-                  {project.techStack.slice(0, 3).map((tech) => (
+              <CardContent className="flex-1 flex flex-col justify-between p-4 sm:p-6 pt-0 space-y-4">
+                <div className="flex flex-wrap gap-2">
+                  {(expandedSkills[project.id] ? project.techStack : project.techStack.slice(0, 3)).map((tech) => (
                     <Badge
                       key={tech}
                       variant="secondary"
-                      className="glass-card text-[10px] sm:text-xs hover:shadow-glow-secondary transition-all duration-300 px-1.5 py-0.5 sm:px-2 sm:py-1"
+                      className="glass-card text-xs hover:shadow-glow-secondary transition-all duration-300"
                     >
                       {tech}
                     </Badge>
@@ -120,31 +121,35 @@ const ProjectsSection = () => {
                   {project.techStack.length > 3 && (
                     <Badge
                       variant="outline"
-                      className="glass-card text-[10px] sm:text-xs px-1.5 py-0.5 sm:px-2 sm:py-1"
+                      className="glass-card text-xs cursor-pointer hover:bg-primary/10 transition-all duration-300"
+                      onClick={() => toggleSkills(project.id)}
                     >
-                      +{project.techStack.length - 3}
+                      {expandedSkills[project.id]
+                        ? 'Show Less'
+                        : `+${project.techStack.length - 3}`
+                      }
                     </Badge>
                   )}
                 </div>
 
-                <div className="flex gap-1.5 sm:gap-2 pt-2">
+                <div className="flex gap-3 mt-auto">
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-[10px] sm:text-xs lg:text-sm px-2 py-1.5 sm:px-3 sm:py-2 h-auto"
+                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-xs"
                     onClick={() => handleProjectClick(project.githubUrl)}
                   >
-                    <Github className="h-2.5 w-2.5 sm:h-3 sm:w-3 lg:h-4 lg:w-4 mr-1" />
-                    <span className="hidden sm:inline">Code</span>
+                    <Github className="h-4 w-4 mr-2" />
+                    Code
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-[10px] sm:text-xs lg:text-sm px-2 py-1.5 sm:px-3 sm:py-2 h-auto"
+                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-xs"
                     onClick={() => handleProjectClick(project.liveUrl)}
                   >
-                    <ExternalLink className="h-2.5 w-2.5 sm:h-3 sm:w-3 lg:h-4 lg:w-4 mr-1" />
-                    <span className="hidden sm:inline">Live</span>
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Live
                   </Button>
                 </div>
               </CardContent>

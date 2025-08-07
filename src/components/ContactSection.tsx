@@ -15,6 +15,7 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -23,22 +24,48 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
-    });
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Message successfully sent!",
+          description: "Thank you for reaching out. I'll get back to you soon!",
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error(result.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
+      toast({
+        title: "Error sending message",
+        description: "Please try again later or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: Mail,
       label: "Email",
-      value: "priyanshu.bca2025@email.com",
-      href: "priyanshu.bca2025@email.com"
+      value: "priyanshumails.bca2025@gmail.com",
+      href: "mailto:priyanshumails.bca2025@gmail.com"
     },
     {
       icon: Phone,
@@ -225,9 +252,13 @@ const ContactSection = () => {
                       />
                     </div>
 
-                    <Button type="submit" className="btn-neon w-full text-base sm:text-lg py-4 sm:py-6 shadow-glow-strong">
+                    <Button
+                      type="submit"
+                      className="btn-neon w-full text-base sm:text-lg py-4 sm:py-6 shadow-glow-strong"
+                      disabled={isSubmitting}
+                    >
                       <Send className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                      Send Message
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
                   </form>
                 </CardContent>

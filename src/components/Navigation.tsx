@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Home, User, FileText, Briefcase, Mail } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,7 +69,6 @@ const Navigation = () => {
             <h1 className="text-lg font-bold neon-text">Priyanshu</h1>
             
             <div className="flex items-center gap-3">
-              <ThemeToggle />
               <Button
                 variant="outline"
                 size="icon"
@@ -84,10 +82,7 @@ const Navigation = () => {
         </div>
       </header>
 
-      {/* Desktop Theme Toggle */}
-      <div className="fixed top-4 right-4 z-50 hidden lg:block">
-        <ThemeToggle />
-      </div>
+
 
       {/* Mobile Navigation Menu */}
       {isOpen && (
