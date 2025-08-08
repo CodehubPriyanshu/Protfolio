@@ -2,10 +2,12 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ResumeSection from "@/components/ResumeSection";
+import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import FloatingIcons from "@/components/FloatingIcons";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const Index = () => {
   return (
@@ -19,11 +21,14 @@ const Index = () => {
       <Navigation />
 
       <main className="relative z-10">
-        <HeroSection />
-        <AboutSection />
-        <ResumeSection />
-        <ProjectsSection />
-        <ContactSection />
+        <ErrorBoundary>
+          <HeroSection />
+          <AboutSection />
+          <ResumeSection />
+          <ExperienceSection />
+          <ProjectsSection />
+          <ContactSection />
+        </ErrorBoundary>
       </main>
 
       {/* Inspirational Quote Section */}

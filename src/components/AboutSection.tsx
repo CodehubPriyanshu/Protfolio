@@ -22,16 +22,15 @@ const AboutSection = () => {
   }, []);
 
   const skills = [
-    { name: "React.js", icon: Code, color: "from-blue-500 to-cyan-500" },
-    { name: "Python", icon: Code, color: "from-green-500 to-blue-500" },
-    { name: "Flask", icon: Server, color: "from-red-500 to-pink-500" },
-    { name: "JavaScript", icon: Globe, color: "from-yellow-500 to-orange-500" },
-    { name: "Node.js", icon: Server, color: "from-green-600 to-green-400" },
-    { name: "MongoDB", icon: Database, color: "from-green-500 to-teal-500" },
-    { name: "Mobile Development", icon: Smartphone, color: "from-purple-500 to-pink-500" },
-    { name: "AI/ML", icon: Brain, color: "from-indigo-500 to-purple-500" },
-    { name: "TypeScript", icon: Code, color: "from-blue-600 to-blue-400" },
-    { name: "Tailwind CSS", icon: Globe, color: "from-cyan-500 to-blue-500" },
+    { name: "Python", icon: Code, color: "from-blue-500 to-cyan-500" },
+    { name: "JavaScripts", icon: Code, color: "from-green-500 to-blue-500" },
+    { name: "Node.js", icon: Server, color: "from-red-500 to-pink-500" },
+    { name: "MongoDB", icon: Globe, color: "from-yellow-500 to-orange-500" },
+    { name: "MySQL", icon: Server, color: "from-green-600 to-green-400" },
+    { name: "Web Devlopment", icon: Database, color: "from-green-500 to-teal-500" },
+    { name: "Data Analysis", icon: Brain, color: "from-indigo-500 to-purple-500" },
+    { name: "Docker", icon: Code, color: "from-blue-600 to-blue-400" },
+    { name: "AI/ML", icon: Globe, color: "from-cyan-500 to-blue-500" },
   ];
 
   return (
@@ -82,8 +81,8 @@ const AboutSection = () => {
                     <span className="text-2xl sm:text-4xl font-bold neon-text">P</span>
                   </div>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold neon-text">Priyanshu</h3>
-                <p className="text-sm sm:text-base text-muted-foreground">Full Stack Developer</p>
+                <h3 className="text-xl sm:text-2xl font-bold neon-text">Priyanshu Kumar</h3>
+                <p className="text-sm sm:text-base text-muted-foreground">Full Stack Developer | Data Analysis</p>
               </div>
 
               <div className="space-y-3 sm:space-y-4 text-muted-foreground text-sm sm:text-base">
@@ -111,7 +110,7 @@ const AboutSection = () => {
                   <div className="text-xs sm:text-sm text-muted-foreground">Projects</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold neon-text">2+</div>
+                  <div className="text-xl sm:text-2xl font-bold neon-text">1+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Years Experience</div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { GraduationCap, Calendar, Award, MapPin } from "lucide-react";
+import { GraduationCap, Calendar, MapPin } from "lucide-react";
 
 const ResumeSection = () => {
   const education = [
@@ -10,26 +10,15 @@ const ResumeSection = () => {
       institution: "ITM University",
       location: "Gwalior, Madhya Pradesh",
       year: "2022 - 2025",
-      grade: "8.5 CGPA",
-      achievements: [
-        "Dean's List for Academic Excellence",
-        "Winner - University Coding Competition 2023",
-        "Active member of Programming Club"
-      ],
-      subjects: ["Data Structures & Algorithms", "Software Engineering", "Database Management", "Web Development", "AI/ML Fundamentals"]
+      subjects: ["Software Engineering", "Data Analytics", "Database Management", "Web Development", "AI/ML Fundamentals"]
     },
     {
       level: "Higher Secondary (12th)",
-      course: "Science Stream (PCM)",
+      course: "Commerce",
       institution: "Kendriya Vidyalaya No.3",
       location: "Gwalior, Madhya Pradesh", 
       year: "2021 - 2022",
-      board: "CBSE",
-      achievements: [
-        "School Topper in Computer Science",
-        "Merit Certificate for Outstanding Performance"
-      ],
-      subjects: ["Physics", "Chemistry", "Mathematics", "Computer Science", "English"]
+      subjects: ["Accountancy", "Business Studies", "Economics", "English", "Informatics Practices"]
     },
     {
       level: "Secondary (10th)",
@@ -37,12 +26,6 @@ const ResumeSection = () => {
       institution: "Kendriya Vidyalaya No.3 ",
       location: "Gwalior, Madhya Pradesh",
       year: "2019 - 2020",
-      board: "CBSE",
-      achievements: [
-        "School Rank 2",
-        "Perfect Score in Mathematics",
-        "Certificate of Excellence"
-      ],
       subjects: ["Mathematics", "Science", "Social Science", "English", "Hindi"]
     }
   ];
@@ -60,7 +43,7 @@ const ResumeSection = () => {
           <h2 className="mobile-heading mb-4">
             <span className="neon-text-glow">Education</span>
           </h2>
-          <p className="mobile-subheading text-muted-foreground">Academic journey and achievements</p>
+          <p className="mobile-subheading text-muted-foreground">Academic journey</p>
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -98,44 +81,23 @@ const ResumeSection = () => {
                         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                            <span>{education[0].year}</span>
+                            <span>{education[0]?.year}</span>
                             <span className="mx-2">•</span>
                             <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
-                            <span>{education[0].location}</span>
+                            <span>{education[0]?.location}</span>
                           </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div className="text-center sm:text-right">
-                      <div className="text-xl sm:text-2xl font-bold neon-text mb-1">{education[0].grade}</div>
-                      <div className="text-xs sm:text-sm text-muted-foreground">Grade</div>
                     </div>
                   </div>
                 </CardHeader>
 
                 <CardContent className="space-y-4 sm:space-y-6">
-                  {/* Achievements */}
-                  <div>
-                    <h4 className="flex items-center gap-2 font-semibold mb-3 text-sm sm:text-base">
-                      <Award className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
-                      Achievements
-                    </h4>
-                    <ul className="space-y-2">
-                      {education[0].achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 sm:mt-2 flex-shrink-0"></div>
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
                   {/* Key Subjects */}
                   <div>
                     <h4 className="font-semibold mb-3 text-sm sm:text-base">Key Subjects</h4>
                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {education[0].subjects.map((subject) => (
+                      {(education[0]?.subjects || []).map((subject) => (
                         <Badge
                           key={subject}
                           variant="outline"
@@ -188,37 +150,16 @@ const ResumeSection = () => {
                             <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                             {education[1].year}
                           </div>
-                          {education[1].board && (
-                            <div className="text-primary font-medium">{education[1].board}</div>
-                          )}
+
                         </div>
                       </div>
                     </div>
 
-                    <div className="text-center sm:text-right">
-                      <div className="text-xl sm:text-2xl font-bold neon-text mb-1">{education[1].grade}</div>
-                      <div className="text-xs sm:text-sm text-muted-foreground">Grade</div>
-                    </div>
+
                   </div>
                 </CardHeader>
 
                 <CardContent className="space-y-4 sm:space-y-6">
-                  {/* Achievements */}
-                  <div>
-                    <h4 className="flex items-center gap-2 font-semibold mb-3 text-sm sm:text-base">
-                      <Award className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
-                      Achievements
-                    </h4>
-                    <ul className="space-y-2">
-                      {education[1].achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 sm:mt-2 flex-shrink-0"></div>
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
                   {/* Key Subjects */}
                   <div>
                     <h4 className="font-semibold mb-3 text-sm sm:text-base">Key Subjects</h4>
@@ -278,37 +219,16 @@ const ResumeSection = () => {
                             <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                             {education[2].year}
                           </div>
-                          {education[2].board && (
-                            <div className="text-primary font-medium">{education[2].board}</div>
-                          )}
+
                         </div>
                       </div>
                     </div>
 
-                    <div className="text-center sm:text-right">
-                      <div className="text-xl sm:text-2xl font-bold neon-text mb-1">{education[2].grade}</div>
-                      <div className="text-xs sm:text-sm text-muted-foreground">Grade</div>
-                    </div>
+
                   </div>
                 </CardHeader>
 
                 <CardContent className="space-y-4 sm:space-y-6">
-                  {/* Achievements */}
-                  <div>
-                    <h4 className="flex items-center gap-2 font-semibold mb-3 text-sm sm:text-base">
-                      <Award className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
-                      Achievements
-                    </h4>
-                    <ul className="space-y-2">
-                      {education[2].achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 sm:mt-2 flex-shrink-0"></div>
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
                   {/* Key Subjects */}
                   <div>
                     <h4 className="font-semibold mb-3 text-sm sm:text-base">Key Subjects</h4>

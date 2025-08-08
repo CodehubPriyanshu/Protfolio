@@ -32,12 +32,12 @@ const FloatingIcons = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   const iconData = [
-    { icon: Github, label: "GitHub", url: "https://github.com" },
-    { icon: Code2, label: "Web Development", url: "https://developer.mozilla.org" },
-    { icon: Database, label: "Data Analysis", url: "https://pandas.pydata.org" },
+    { icon: Github, label: "GitHub", url: "https://github.com/CodehubPriyanshu" },
+    { icon: Code2, label: "Web Development", url: "https://drive.google.com/file/d/1oDyb51rQZ3xUzBMKRviyoxyP2lVNMF3r/view?usp=drive_link" },
+    { icon: Database, label: "Data Analysis", url: "https://drive.google.com/file/d/1x7hjoY9gz1EYDWj0XqWM-TDRM2kFXQr9/view?usp=drive_link" },
     { icon: Brain, label: "AI & Machine Learning", url: "https://tensorflow.org" },
     { icon: Rocket, label: "Innovation", url: "https://www.spacex.com" },
-    { icon: Cloud, label: "Cloud Computing", url: "https://aws.amazon.com" },
+    { icon: Cloud, label: "Cloud Computing", url: "https://drive.google.com/file/d/1kQnnOrvZkkGxS2E4xtCnJDnmgyU9dr74/view?usp=drive_link" },
     { icon: BarChart3, label: "Data Visualization", url: "https://d3js.org" },
     { icon: Cpu, label: "Computer Science", url: "https://www.acm.org" },
     { icon: Globe, label: "Web Technologies", url: "https://www.w3.org" },

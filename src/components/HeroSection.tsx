@@ -43,7 +43,7 @@ const HeroSection = () => {
                 variant="outline"
                 size="icon"
                 className="glass-card hover:shadow-[var(--glow-strong)] hover:border-primary/50 hover:bg-primary/10 active:scale-95 h-10 w-10 sm:h-12 sm:w-12 transition-all duration-300"
-                onClick={() => window.open('https://github.com/priyanshu', '_blank')}
+                onClick={() => window.open('https://github.com/CodehubPriyanshu', '_blank')}
               >
                 <Github className="h-4 w-4 sm:h-5 sm:w-5 hover:text-primary transition-colors duration-300" />
               </Button>
@@ -51,7 +51,7 @@ const HeroSection = () => {
                 variant="outline"
                 size="icon"
                 className="glass-card hover:shadow-[var(--glow-strong)] hover:border-primary/50 hover:bg-primary/10 active:scale-95 h-10 w-10 sm:h-12 sm:w-12 transition-all duration-300"
-                onClick={() => window.open('https://linkedin.com/in/priyanshu', '_blank')}
+                onClick={() => window.open('https://www.linkedin.com/in/priyanshu-kumar-bca2025/', '_blank')}
               >
                 <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 hover:text-primary transition-colors duration-300" />
               </Button>

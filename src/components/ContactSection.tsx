@@ -85,21 +85,21 @@ const ContactSection = () => {
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/priyanshu",
+      href: "https://github.com/CodehubPriyanshu",
       color: "hover:text-gray-900"
     },
     {
       icon: Linkedin,
       label: "LinkedIn", 
-      href: "https://linkedin.com/in/priyanshu-dev",
+      href: "https://www.linkedin.com/in/priyanshu-kumar-bca2025/",
       color: "hover:text-blue-600"
     },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      href: "https://twitter.com/priyanshu_dev",
-      color: "hover:text-blue-400"
-    }
+    // {
+    //   icon: Twitter,
+    //   label: "Twitter",
+    //   href: "https://twitter.com/priyanshu_dev",
+    //   color: "hover:text-blue-400"
+    // }
   ];
 
   return (
