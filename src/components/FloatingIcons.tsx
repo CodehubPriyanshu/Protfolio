@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import { 
-  Github, 
-  Code2, 
-  Database, 
-  Brain, 
-  Rocket, 
-  Cloud, 
-  BarChart3, 
-  Cpu, 
-  Globe, 
-  Zap 
+import {
+  Code2,
+  Database,
+  Brain,
+  Rocket,
+  Cloud,
+  BarChart3,
+  Cpu,
+  Globe,
+  Zap,
+  Palette
 } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -32,31 +32,55 @@ const FloatingIcons = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   const iconData = [
-    { icon: Github, label: "GitHub", url: "https://github.com/CodehubPriyanshu" },
     { icon: Code2, label: "Web Development", url: "https://drive.google.com/file/d/1oDyb51rQZ3xUzBMKRviyoxyP2lVNMF3r/view?usp=drive_link" },
     { icon: Database, label: "Data Analysis", url: "https://drive.google.com/file/d/1x7hjoY9gz1EYDWj0XqWM-TDRM2kFXQr9/view?usp=drive_link" },
-    { icon: Brain, label: "AI & Machine Learning", url: "https://tensorflow.org" },
-    { icon: Rocket, label: "Innovation", url: "https://www.spacex.com" },
-    { icon: Cloud, label: "Cloud Computing", url: "https://drive.google.com/file/d/1kQnnOrvZkkGxS2E4xtCnJDnmgyU9dr74/view?usp=drive_link" },
-    { icon: BarChart3, label: "Data Visualization", url: "https://d3js.org" },
-    { icon: Cpu, label: "Computer Science", url: "https://www.acm.org" },
-    { icon: Globe, label: "Web Technologies", url: "https://www.w3.org" },
-    { icon: Zap, label: "Performance", url: "https://web.dev" },
+    { icon: Brain, label: "AWS", url: "https://drive.google.com/file/d/1kQnnOrvZkkGxS2E4xtCnJDnmgyU9dr74/view?usp=drive_link" },
+    { icon: Cloud, label: "Google Cloud", url: "https://www.credential.net/8fe11c38-23dc-42d4-b641-fc6ead8195ab" },
+    { icon: BarChart3, label: "Data Visualization", url: "https://drive.google.com/file/d/1ggt14QPdL1vfEggtjuX8VlM7gSqKd5Mz/view?usp=drive_link" },
+    { icon: Database, label: "MySQL and Statistics", url: "https://drive.google.com/file/d/1ryFzi1DQyh2L5x8ZyTnXGnKG-wFlZgFt/view?usp=drive_link" },
+    { icon: Globe, label: "React", url: "https://drive.google.com/file/d/1nF0ICTTIQwTUQdMQU8Fb65vRVklNkfkk/view?usp=drive_link" },
+    { icon: Zap, label: "Prompt Engineering", url: "https://learn.deeplearning.ai/accomplishments/07c2f1f7-7d30-4b96-bfc2-7269af5c273c?usp=sharing" },
+    { icon: Cpu, label: "AI & Machine Learning", url: "https://github.com/CodehubPriyanshu" },
+    { icon: Palette, label: "UI/UX Design", url: "https://github.com/CodehubPriyanshu" },
   ];
 
   useEffect(() => {
     setMounted(true);
 
-    // Initialize floating icons with random positions and velocities
-    // Avoid center area where profile photo is located (30-70% width, 20-80% height)
+    // Initialize floating icons with improved positioning
+    // Avoid center area where profile photo is located and ensure better distribution
     const initialIcons: FloatingIcon[] = iconData.map((data, index) => {
       let x, y;
+      let attempts = 0;
+
       do {
-        x = Math.random() * 80 + 10; // Keep icons within 10-90% of screen
-        y = Math.random() * 80 + 10;
+        // Create zones for better distribution
+        const zone = index % 4;
+        switch (zone) {
+          case 0: // Top-left
+            x = Math.random() * 25 + 5; // 5-30%
+            y = Math.random() * 30 + 5; // 5-35%
+            break;
+          case 1: // Top-right
+            x = Math.random() * 25 + 70; // 70-95%
+            y = Math.random() * 30 + 5; // 5-35%
+            break;
+          case 2: // Bottom-left
+            x = Math.random() * 25 + 5; // 5-30%
+            y = Math.random() * 30 + 65; // 65-95%
+            break;
+          case 3: // Bottom-right
+            x = Math.random() * 25 + 70; // 70-95%
+            y = Math.random() * 30 + 65; // 65-95%
+            break;
+          default:
+            x = Math.random() * 20 + 5; // Fallback
+            y = Math.random() * 20 + 5;
+        }
+        attempts++;
       } while (
-        // Avoid profile photo area (center of screen)
-        (x > 30 && x < 70 && y > 20 && y < 80)
+        // Avoid center area (profile photo and main content)
+        (x > 25 && x < 75 && y > 15 && y < 85) && attempts < 10
       );
 
       return {
@@ -64,16 +88,16 @@ const FloatingIcons = () => {
         ...data,
         x,
         y,
-        vx: (Math.random() - 0.5) * 0.3, // Slower movement
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 8 + 16, // Size between 16-24px
-        delay: index * 0.5, // Staggered animation delays
+        vx: (Math.random() - 0.5) * 0.2, // Slower, more gentle movement
+        vy: (Math.random() - 0.5) * 0.2,
+        size: Math.random() * 6 + 18, // Size between 18-24px
+        delay: index * 0.3, // Staggered animation delays
       };
     });
 
     setIcons(initialIcons);
 
-    // Animate icons
+    // Enhanced animation with smoother movement
     const animateIcons = () => {
       setIcons(prev => prev.map(icon => {
         let newX = icon.x + icon.vx;
@@ -81,15 +105,23 @@ const FloatingIcons = () => {
         let newVx = icon.vx;
         let newVy = icon.vy;
 
-        // Bounce off edges
-        if (newX <= 5 || newX >= 95) {
-          newVx = -newVx;
-          newX = Math.max(5, Math.min(95, newX));
+        // Smooth bounce off edges with damping
+        if (newX <= 2 || newX >= 98) {
+          newVx = -newVx * 0.8; // Add damping for more natural movement
+          newX = Math.max(2, Math.min(98, newX));
         }
-        if (newY <= 5 || newY >= 95) {
-          newVy = -newVy;
-          newY = Math.max(5, Math.min(95, newY));
+        if (newY <= 2 || newY >= 98) {
+          newVy = -newVy * 0.8; // Add damping for more natural movement
+          newY = Math.max(2, Math.min(98, newY));
         }
+
+        // Add slight random variation to prevent predictable patterns
+        newVx += (Math.random() - 0.5) * 0.02;
+        newVy += (Math.random() - 0.5) * 0.02;
+
+        // Limit velocity to prevent too fast movement
+        newVx = Math.max(-0.3, Math.min(0.3, newVx));
+        newVy = Math.max(-0.3, Math.min(0.3, newVy));
 
         return {
           ...icon,
@@ -101,24 +133,35 @@ const FloatingIcons = () => {
       }));
     };
 
-    const interval = setInterval(animateIcons, 100);
+    const interval = setInterval(animateIcons, 80); // Slightly faster updates for smoother animation
 
-    // Handle scroll to hide icons when not on home screen
+    // Enhanced scroll-based visibility control
     const handleScroll = () => {
       const heroSection = document.getElementById('hero');
       if (heroSection) {
         const rect = heroSection.getBoundingClientRect();
-        const isHeroVisible = rect.bottom > 100; // Show icons when hero section is mostly visible
+        const scrollProgress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / window.innerHeight));
+
+        // Fade out icons as user scrolls past hero section
+        const isHeroVisible = rect.bottom > 50; // Show icons when hero section is visible
         setIsVisible(isHeroVisible);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Throttle scroll events for better performance
+    let scrollTimeout: NodeJS.Timeout;
+    const throttledScroll = () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(handleScroll, 16); // ~60fps
+    };
+
+    window.addEventListener('scroll', throttledScroll, { passive: true });
     handleScroll(); // Check initial state
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', throttledScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, []);
 

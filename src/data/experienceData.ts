@@ -3,6 +3,8 @@ export type Experience = {
   role: string;
   duration: string;
   responsibilities: string[];
+  companyUrl?: string;
+  companyIcon?: string;
 };
 
 export const experiences: Experience[] = [
@@ -16,5 +18,7 @@ export const experiences: Experience[] = [
       "Created backend email form logic with Nodemailer and Express.",
       "Integrated dynamic project cards using data mapping logic.",
     ],
+    companyUrl: "https://agnistoka.com",
+    companyIcon: "Building2",
   },
 ];

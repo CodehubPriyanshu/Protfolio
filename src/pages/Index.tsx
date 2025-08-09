@@ -11,7 +11,12 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background scroll-snap-container">
+      {/* Skip link for accessibility */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       {/* Enhanced Animated Background */}
       <AnimatedBackground />
 
@@ -20,14 +25,26 @@ const Index = () => {
 
       <Navigation />
 
-      <main className="relative z-10">
+      <main id="main-content" className="relative z-10" role="main">
         <ErrorBoundary>
-          <HeroSection />
-          <AboutSection />
-          <ResumeSection />
-          <ExperienceSection />
-          <ProjectsSection />
-          <ContactSection />
+          <section id="hero" className="scroll-snap-item" aria-label="Hero section">
+            <HeroSection />
+          </section>
+          <section id="about" className="scroll-snap-item" aria-label="About section">
+            <AboutSection />
+          </section>
+          <section id="resume" className="scroll-snap-item" aria-label="Education section">
+            <ResumeSection />
+          </section>
+          <section id="experience" className="scroll-snap-item" aria-label="Professional experience section">
+            <ExperienceSection />
+          </section>
+          <section id="projects" className="scroll-snap-item" aria-label="Projects section">
+            <ProjectsSection />
+          </section>
+          <section id="contact" className="scroll-snap-item" aria-label="Contact section">
+            <ContactSection />
+          </section>
         </ErrorBoundary>
       </main>
 

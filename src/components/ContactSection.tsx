@@ -117,38 +117,40 @@ const ContactSection = () => {
           <p className="mobile-subheading text-muted-foreground">Ready to bring your ideas to life? Let's talk!</p>
         </div>
 
+        {/* Enhanced mobile-responsive layout */}
         <div className="max-w-6xl mx-auto">
-          {/* Enhanced two-card layout: side-by-side on desktop, stacked on mobile */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
 
-            {/* Get in Touch Card - Enhanced with glowing border */}
+            {/* Get in Touch Card - Enhanced mobile responsiveness */}
             <div className="animate-slide-in-left">
-              <Card className="glass-card contact-card h-full">
-                <CardHeader className="pb-6">
-                  <CardTitle className="flex items-center gap-3 text-xl sm:text-2xl">
+              <Card className="glass-card contact-card h-full min-h-[400px] sm:min-h-[500px]">
+                <CardHeader className="pb-4 sm:pb-6 p-4 sm:p-6">
+                  <CardTitle className="flex items-center gap-3 text-lg sm:text-xl lg:text-2xl">
                     <div className="bg-gradient-primary rounded-full p-2 shadow-glow">
-                      <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
+                      <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-primary-foreground" />
                     </div>
                     Get in Touch
                   </CardTitle>
-                  <CardDescription className="text-sm sm:text-base">
+                  <CardDescription className="text-sm sm:text-base leading-relaxed">
                     I'm always excited to discuss new opportunities and collaborate on interesting projects.
                   </CardDescription>
                 </CardHeader>
 
-                <CardContent className="space-y-6">
-                  {/* Contact Information */}
-                  <div className="space-y-4">
+                <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6 pt-0">
+                  {/* Contact Information with improved mobile layout */}
+                  <div className="space-y-3 sm:space-y-4">
                     {contactInfo.map((info, index) => (
-                      <div key={index} className="flex items-center gap-4 group contact-info-item">
-                        <div className="bg-gradient-primary rounded-full p-3 group-hover:shadow-glow-strong transition-all duration-300 group-hover:scale-110">
+                      <div key={index} className="flex items-center gap-3 sm:gap-4 group contact-info-item">
+                        <div className="bg-gradient-primary rounded-full p-2 sm:p-3 group-hover:shadow-glow-strong transition-all duration-300 group-hover:scale-110 flex-shrink-0">
                           <info.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="text-xs sm:text-sm text-muted-foreground font-medium">{info.label}</div>
                           <a
                             href={info.href}
-                            className="font-semibold hover:neon-text transition-all duration-300 text-sm sm:text-base break-all"
+                            className="font-semibold hover:neon-text transition-all duration-300 text-sm sm:text-base break-words"
+                            aria-label={`Contact via ${info.label}: ${info.value}`}
+                            tabIndex={0}
                           >
                             {info.value}
                           </a>
@@ -157,10 +159,10 @@ const ContactSection = () => {
                     ))}
                   </div>
 
-                  {/* Social Links Section */}
+                  {/* Social Links Section with improved mobile layout */}
                   <div className="pt-4 border-t border-border/50">
-                    <h4 className="text-lg font-semibold mb-4">Follow My Journey</h4>
-                    <div className="flex gap-4 justify-start">
+                    <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Follow My Journey</h4>
+                    <div className="flex gap-3 sm:gap-4 justify-start">
                       {socialLinks.map((social, index) => (
                         <a
                           key={index}
@@ -168,9 +170,11 @@ const ContactSection = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group social-link"
+                          aria-label={`Visit my ${social.label} profile`}
+                          tabIndex={0}
                         >
-                          <div className="bg-muted rounded-full p-3 group-hover:shadow-glow-strong transition-all duration-300 group-hover:scale-110 group-active:scale-95 border border-border/20 group-hover:border-primary/50">
-                            <social.icon className={`h-5 w-5 transition-colors duration-300 ${social.color}`} />
+                          <div className="bg-muted rounded-full p-2 sm:p-3 group-hover:shadow-glow-strong transition-all duration-300 group-hover:scale-110 group-active:scale-95 border border-border/20 group-hover:border-primary/50">
+                            <social.icon className={`h-4 w-4 sm:h-5 sm:w-5 transition-colors duration-300 ${social.color}`} />
                           </div>
                         </a>
                       ))}
@@ -180,26 +184,27 @@ const ContactSection = () => {
               </Card>
             </div>
 
-            {/* Send a Message Card - Enhanced with glowing border */}
+            {/* Send a Message Card - Enhanced mobile responsiveness */}
             <div className="animate-slide-in-right">
-              <Card className="glass-card contact-card h-full">
-                <CardHeader className="pb-6">
-                  <CardTitle className="flex items-center gap-3 text-xl sm:text-2xl">
+              <Card className="glass-card contact-card h-full min-h-[400px] sm:min-h-[500px]">
+                <CardHeader className="pb-4 sm:pb-6 p-4 sm:p-6">
+                  <CardTitle className="flex items-center gap-3 text-lg sm:text-xl lg:text-2xl">
                     <div className="bg-gradient-primary rounded-full p-2 shadow-glow">
-                      <Send className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
+                      <Send className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 text-primary-foreground" />
                     </div>
                     Send a Message
                   </CardTitle>
-                  <CardDescription className="text-sm sm:text-base">
+                  <CardDescription className="text-sm sm:text-base leading-relaxed">
                     Have a project in mind? Let's discuss how we can work together.
                   </CardDescription>
                 </CardHeader>
 
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                <CardContent className="p-4 sm:p-6 pt-0">
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                    {/* Name and Email row - responsive grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="name" className="text-sm font-medium">Name</Label>
+                        <Label htmlFor="name" className="text-sm font-medium">Name *</Label>
                         <Input
                           id="name"
                           name="name"
@@ -207,11 +212,12 @@ const ContactSection = () => {
                           onChange={handleInputChange}
                           placeholder="Your name"
                           className="mobile-form-input"
+                          aria-required="true"
                           required
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-sm font-medium">Email</Label>
+                        <Label htmlFor="email" className="text-sm font-medium">Email *</Label>
                         <Input
                           id="email"
                           name="email"
@@ -220,13 +226,15 @@ const ContactSection = () => {
                           onChange={handleInputChange}
                           placeholder="your.email@example.com"
                           className="mobile-form-input"
+                          aria-required="true"
                           required
                         />
                       </div>
                     </div>
 
+                    {/* Subject field */}
                     <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-sm font-medium">Subject</Label>
+                      <Label htmlFor="subject" className="text-sm font-medium">Subject *</Label>
                       <Input
                         id="subject"
                         name="subject"
@@ -234,28 +242,33 @@ const ContactSection = () => {
                         onChange={handleInputChange}
                         placeholder="What's this about?"
                         className="mobile-form-input"
+                        aria-required="true"
                         required
                       />
                     </div>
 
+                    {/* Message field */}
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-sm font-medium">Message</Label>
+                      <Label htmlFor="message" className="text-sm font-medium">Message *</Label>
                       <Textarea
                         id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
                         placeholder="Tell me about your project or idea..."
-                        rows={5}
-                        className="mobile-form-input resize-none"
+                        rows={4}
+                        className="mobile-form-input resize-none min-h-[100px] sm:min-h-[120px]"
+                        aria-required="true"
                         required
                       />
                     </div>
 
+                    {/* Submit button */}
                     <Button
                       type="submit"
-                      className="btn-neon w-full text-base sm:text-lg py-4 sm:py-6 shadow-glow-strong"
+                      className="btn-neon w-full text-sm sm:text-base lg:text-lg py-3 sm:py-4 lg:py-6 shadow-glow-strong"
                       disabled={isSubmitting}
+                      aria-label={isSubmitting ? 'Sending message...' : 'Send message'}
                     >
                       <Send className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                       {isSubmitting ? 'Sending...' : 'Send Message'}
