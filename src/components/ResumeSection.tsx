@@ -46,167 +46,190 @@ const ResumeSection = () => {
           <p className="mobile-subheading text-muted-foreground">Academic journey</p>
         </div>
 
-        {/* Enhanced mobile-responsive grid layout */}
         <div className="max-w-6xl mx-auto">
-          {/* Education cards with improved mobile layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8 lg:mb-12">
+          {/* First two education cards - side by side on mobile and desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 mb-8 lg:mb-12">
             {/* Graduation Card */}
-            <Card
-              className="glass-card animate-fade-in-up h-full min-h-[350px] sm:min-h-[400px]"
-              style={{ animationDelay: '0ms' }}
-            >
-              <CardHeader className="pb-4 p-4 sm:p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="bg-gradient-primary rounded-full p-2">
-                    <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
-                  </div>
-                  <Badge
-                    variant="secondary"
-                    className="glass-card text-xs sm:text-sm font-semibold"
-                  >
-                    {education[0].level}
-                  </Badge>
-                </div>
+            <div className="flex-1">
+              <Card
+                className="glass-card animate-fade-in-up h-full"
+                style={{ animationDelay: '0ms' }}
+              >
+                <CardHeader className="pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="bg-gradient-primary rounded-full p-2">
+                          <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
+                        </div>
+                        <Badge
+                          variant="secondary"
+                          className="glass-card text-xs font-semibold"
+                        >
+                          {education[0].level}
+                        </Badge>
+                      </div>
 
-                <CardTitle className="text-lg sm:text-xl lg:text-2xl mb-2 hover:neon-text transition-all duration-300 line-clamp-2">
-                  {education[0].course}
-                </CardTitle>
+                      <CardTitle className="text-xl sm:text-2xl mb-2 hover:neon-text transition-all duration-300">
+                        {education[0].course}
+                      </CardTitle>
 
-                <div className="space-y-2">
-                  <div className="text-sm sm:text-base">
-                    <span className="font-semibold text-foreground">{education[0].institution}</span>
-                  </div>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                      <span>{education[0]?.year}</span>
+                      <div className="space-y-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base">
+                          <span className="font-semibold text-foreground">{education[0].institution}</span>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
+                            <span>{education[0]?.year}</span>
+                            <span className="mx-2">•</span>
+                            <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
+                            <span>{education[0]?.location}</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
-                      <span>{education[0]?.location}</span>
+                  </div>
+                </CardHeader>
+
+                <CardContent className="space-y-4 sm:space-y-6">
+                  {/* Key Subjects */}
+                  <div>
+                    <h4 className="font-semibold mb-3 text-sm sm:text-base">Key Subjects</h4>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                      {(education[0]?.subjects || []).map((subject) => (
+                        <Badge
+                          key={subject}
+                          variant="outline"
+                          className="glass-card text-xs hover:shadow-glow-secondary transition-all duration-300"
+                        >
+                          {subject}
+                        </Badge>
+                      ))}
                     </div>
                   </div>
-                </div>
-              </CardHeader>
-
-              <CardContent className="space-y-4 p-4 sm:p-6 pt-0">
-                <div>
-                  <h4 className="font-semibold mb-3 text-sm sm:text-base">Key Subjects</h4>
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {(education[0]?.subjects || []).map((subject) => (
-                      <Badge
-                        key={subject}
-                        variant="outline"
-                        className="glass-card text-xs sm:text-sm hover:shadow-glow-secondary transition-all duration-300"
-                      >
-                        {subject}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
 
             {/* Higher Secondary Card */}
-            <Card
-              className="glass-card animate-fade-in-up h-full min-h-[350px] sm:min-h-[400px]"
-              style={{ animationDelay: '200ms' }}
-            >
-              <CardHeader className="pb-4 p-4 sm:p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="bg-gradient-primary rounded-full p-2">
-                    <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
-                  </div>
-                  <Badge
-                    variant="secondary"
-                    className="glass-card text-xs sm:text-sm font-semibold"
-                  >
-                    {education[1].level}
-                  </Badge>
-                </div>
+            <div className="flex-1">
+              <Card
+                className="glass-card animate-fade-in-up h-full"
+                style={{ animationDelay: '200ms' }}
+              >
+                <CardHeader className="pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="bg-gradient-primary rounded-full p-2">
+                          <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
+                        </div>
+                        <Badge
+                          variant="secondary"
+                          className="glass-card text-xs font-semibold"
+                        >
+                          {education[1].level}
+                        </Badge>
+                      </div>
 
-                <CardTitle className="text-lg sm:text-xl lg:text-2xl mb-2 hover:neon-text transition-all duration-300 line-clamp-2">
-                  {education[1].course}
-                </CardTitle>
+                      <CardTitle className="text-xl sm:text-2xl mb-2 hover:neon-text transition-all duration-300">
+                        {education[1].course}
+                      </CardTitle>
 
-                <div className="space-y-2">
-                  <div className="text-sm sm:text-base">
-                    <span className="font-semibold text-foreground">{education[1].institution}</span>
-                  </div>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                      <span>{education[1].year}</span>
+                      <div className="space-y-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base">
+                          <span className="font-semibold text-foreground">{education[1].institution}</span>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1">
+                            <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
+                            {education[1].location}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
+                            {education[1].year}
+                          </div>
+
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
-                      <span>{education[1].location}</span>
+
+
+                  </div>
+                </CardHeader>
+
+                <CardContent className="space-y-4 sm:space-y-6">
+                  {/* Key Subjects */}
+                  <div>
+                    <h4 className="font-semibold mb-3 text-sm sm:text-base">Key Subjects</h4>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                      {education[1].subjects.map((subject) => (
+                        <Badge
+                          key={subject}
+                          variant="outline"
+                          className="glass-card text-xs hover:shadow-glow-secondary transition-all duration-300"
+                        >
+                          {subject}
+                        </Badge>
+                      ))}
                     </div>
                   </div>
-                </div>
-              </CardHeader>
-
-              <CardContent className="space-y-4 p-4 sm:p-6 pt-0">
-                <div>
-                  <h4 className="font-semibold mb-3 text-sm sm:text-base">Key Subjects</h4>
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {education[1].subjects.map((subject) => (
-                      <Badge
-                        key={subject}
-                        variant="outline"
-                        className="glass-card text-xs sm:text-sm hover:shadow-glow-secondary transition-all duration-300"
-                      >
-                        {subject}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </div>
 
           {/* Secondary (10th) Card - Centered below */}
           <div className="flex justify-center">
             <div className="w-full max-w-2xl">
               <Card
-                className="glass-card animate-fade-in-up min-h-[350px] sm:min-h-[400px]"
+                className="glass-card animate-fade-in-up"
                 style={{ animationDelay: '400ms' }}
               >
-                <CardHeader className="pb-4 p-4 sm:p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="bg-gradient-primary rounded-full p-2">
-                      <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
-                    </div>
-                    <Badge
-                      variant="secondary"
-                      className="glass-card text-xs sm:text-sm font-semibold"
-                    >
-                      {education[2].level}
-                    </Badge>
-                  </div>
-
-                  <CardTitle className="text-lg sm:text-xl lg:text-2xl mb-2 hover:neon-text transition-all duration-300 line-clamp-2">
-                    {education[2].course}
-                  </CardTitle>
-
-                  <div className="space-y-2">
-                    <div className="text-sm sm:text-base">
-                      <span className="font-semibold text-foreground">{education[2].institution}</span>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                        <span>{education[2].year}</span>
+                <CardHeader className="pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="bg-gradient-primary rounded-full p-2">
+                          <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
+                        </div>
+                        <Badge
+                          variant="secondary"
+                          className="glass-card text-xs font-semibold"
+                        >
+                          {education[2].level}
+                        </Badge>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
-                        <span>{education[2].location}</span>
+
+                      <CardTitle className="text-xl sm:text-2xl mb-2 hover:neon-text transition-all duration-300">
+                        {education[2].course}
+                      </CardTitle>
+
+                      <div className="space-y-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm sm:text-base">
+                          <span className="font-semibold text-foreground">{education[2].institution}</span>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1">
+                            <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
+                            {education[2].location}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
+                            {education[2].year}
+                          </div>
+
+                        </div>
                       </div>
                     </div>
+
+
                   </div>
                 </CardHeader>
 
-                <CardContent className="space-y-4 p-4 sm:p-6 pt-0">
+                <CardContent className="space-y-4 sm:space-y-6">
+                  {/* Key Subjects */}
                   <div>
                     <h4 className="font-semibold mb-3 text-sm sm:text-base">Key Subjects</h4>
                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -214,7 +237,7 @@ const ResumeSection = () => {
                         <Badge
                           key={subject}
                           variant="outline"
-                          className="glass-card text-xs sm:text-sm hover:shadow-glow-secondary transition-all duration-300"
+                          className="glass-card text-xs hover:shadow-glow-secondary transition-all duration-300"
                         >
                           {subject}
                         </Badge>

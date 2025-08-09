@@ -1,11 +1,44 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Mail, Download, ArrowDown, Camera } from "lucide-react";
 import profileImage from "@/assets/profile.jpg";
+import { useState, useRef } from "react";
 
 const HeroSection = () => {
+  const [profileImageSrc, setProfileImageSrc] = useState(profileImage);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleDownloadCV = () => {
+    // TODO: Upload resume link here
+    // Replace the URL below with your actual resume file URL
+    const resumeUrl = '/path-to-your-resume.pdf';
+
+    // Create a temporary link element and trigger download
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Priyanshu_Kumar_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setProfileImageSrc(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const triggerFileInput = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -26,15 +59,29 @@ const HeroSection = () => {
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
           {/* Profile Section - centered on mobile */}
           <div className="text-center animate-slide-in-left order-1 lg:order-1">
-            <div className="relative w-48 h-56 sm:w-56 sm:h-64 lg:w-64 lg:h-80 xl:w-72 xl:h-96 mx-auto mb-6 sm:mb-8">
+            <div className="relative w-48 h-56 sm:w-56 sm:h-64 lg:w-64 lg:h-80 xl:w-72 xl:h-96 mx-auto mb-6 sm:mb-8 group">
               <div className="absolute inset-0 rounded-full bg-gradient-primary animate-glow"></div>
               <div className="absolute inset-2 rounded-full overflow-hidden">
                 <img
-                  src={profileImage}
+                  src={profileImageSrc}
                   alt="Priyanshu Kumar - Full Stack Developer"
                   className="w-full h-full object-cover"
                 />
               </div>
+
+              {/* Upload overlay */}
+              <div className="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center cursor-pointer" onClick={triggerFileInput}>
+                <Camera className="h-8 w-8 text-white" />
+              </div>
+
+              {/* Hidden file input */}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
             </div>
             
             {/* Social Links - mobile optimized with glow effects */}
@@ -84,9 +131,18 @@ const HeroSection = () => {
             </div>
 
             <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed animate-fade-in-up max-w-lg mx-auto lg:mx-0" style={{ animationDelay: '0.4s' }}>
-              Passionate about creating innovative solutions that bridge the gap between 
+              Passionate about creating innovative solutions that bridge the gap between
               cutting-edge technology and real-world problems.
             </p>
+
+            {/* Tagline with special styling */}
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+              <div className="inline-block bg-black text-white px-4 py-2 rounded-lg border-2 border-white/20 shadow-lg">
+                <p className="text-sm sm:text-base lg:text-lg font-medium">
+                  Transforming data into insight, code into impact
+                </p>
+              </div>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
               <Button 
@@ -97,9 +153,10 @@ const HeroSection = () => {
                 <ArrowDown className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
               
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="glass-card text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8 hover:shadow-glow"
+                onClick={handleDownloadCV}
               >
                 <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Download CV

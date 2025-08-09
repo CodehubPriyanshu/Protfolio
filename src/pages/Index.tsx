@@ -11,12 +11,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background scroll-snap-container">
-      {/* Skip link for accessibility */}
-      <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
-
+    <div className="min-h-screen bg-background no-overflow">
       {/* Enhanced Animated Background */}
       <AnimatedBackground />
 
@@ -25,52 +20,27 @@ const Index = () => {
 
       <Navigation />
 
-      <main id="main-content" className="relative z-10" role="main">
+      <main className="relative z-10">
         <ErrorBoundary>
-          <section id="hero" className="scroll-snap-item" aria-label="Hero section">
-            <HeroSection />
-          </section>
-          <section id="about" className="scroll-snap-item" aria-label="About section">
-            <AboutSection />
-          </section>
-          <section id="resume" className="scroll-snap-item" aria-label="Education section">
-            <ResumeSection />
-          </section>
-          <section id="experience" className="scroll-snap-item" aria-label="Professional experience section">
-            <ExperienceSection />
-          </section>
-          <section id="projects" className="scroll-snap-item" aria-label="Projects section">
-            <ProjectsSection />
-          </section>
-          <section id="contact" className="scroll-snap-item" aria-label="Contact section">
-            <ContactSection />
-          </section>
+          <HeroSection />
+          <AboutSection />
+          <ResumeSection />
+          <ExperienceSection />
+          <ProjectsSection />
+          <ContactSection />
         </ErrorBoundary>
       </main>
 
-      {/* Inspirational Quote Section */}
-      <div className="py-12 sm:py-16 text-center relative">
-        <div className="container mx-auto px-6">
-          <p className="text-xl sm:text-2xl lg:text-3xl font-medium neon-text-glow">
-            Transforming data into insight, code into impact.
-          </p>
-        </div>
-      </div>
-
       {/* Footer */}
-      <footer className="bg-gradient-primary py-8 relative overflow-hidden">
+      <footer className="bg-black py-8 relative overflow-hidden border-t-2 border-white/20">
         <div className="container mx-auto px-6 text-center">
-          <div className="text-primary-foreground space-y-4">
-            <h3 className="text-2xl font-bold">Priyanshu Kumar</h3>
-            <p className="text-primary-foreground/80">
-              Full Stack Developer & AI Enthusiast
-            </p>
-            <p className="text-sm text-primary-foreground/60">
-              © 2025 Priyanshu Kumar. Built with React, Tailwind & CSS.
+          <div className="text-white">
+            <p className="text-sm sm:text-base font-medium">
+              © 2025 built by Priyanshu Kumar
             </p>
           </div>
         </div>
-        
+
         {/* Footer background effects */}
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute top-4 left-10 w-8 h-8 bg-white rounded-full animate-pulse float"></div>

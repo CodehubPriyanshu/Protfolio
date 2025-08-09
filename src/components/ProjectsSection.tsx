@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { GitBranch, ExternalLink } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
 const ProjectsSection = () => {
@@ -27,7 +27,7 @@ const ProjectsSection = () => {
     {
       id: 2,
       title: "SentimentSage",
-      description: "AI sentiment analysis app with React frontend, Flask backend, secure configs.",
+      description: "AI sentiment analysis app with React frontend, Flask backend, secure configs, and scalable deployment",
       techStack: ["React", "MongoDB Atlas", "flask", "Axios", "JWT Authentication"],
       githubUrl: "https://github.com/CodehubPriyanshu/SentimentSage",
       liveUrl: "https://sentiment-sage42984.vercel.app/",
@@ -89,31 +89,31 @@ const ProjectsSection = () => {
           <p className="mobile-subheading text-muted-foreground">Innovative solutions built with modern technologies</p>
         </div>
 
-        {/* Enhanced Mobile-responsive grid with scroll snap */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 scroll-smooth">
+        {/* Mobile-optimized grid: 2 columns on mobile, 3 on desktop */}
+        <div className="mobile-card-grid">
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className="project-card group h-full flex flex-col min-h-[400px] sm:min-h-[450px] lg:min-h-[500px]"
+              className="project-card group h-full flex flex-col mobile-card"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardHeader className="p-4 sm:p-6 pb-3 flex-shrink-0">
-                <CardTitle className="text-base sm:text-lg lg:text-xl group-hover:neon-text transition-all duration-300 line-clamp-2 leading-tight">
+              <CardHeader className="p-4 sm:p-6 pb-3">{/* Removed charging icon section */}
+
+                <CardTitle className="text-sm sm:text-base lg:text-lg xl:text-xl group-hover:neon-text transition-all duration-300 line-clamp-2">
                   {project.title}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground text-sm sm:text-base line-clamp-3 leading-relaxed mt-2">
+                <CardDescription className="text-muted-foreground text-xs sm:text-sm lg:text-base line-clamp-2 sm:line-clamp-3">
                   {project.description}
                 </CardDescription>
               </CardHeader>
 
               <CardContent className="flex-1 flex flex-col justify-between p-4 sm:p-6 pt-0 space-y-4">
-                {/* Tech Stack with improved mobile layout */}
                 <div className="flex flex-wrap gap-2">
                   {(expandedSkills[project.id] ? project.techStack : project.techStack.slice(0, 3)).map((tech) => (
                     <Badge
                       key={tech}
                       variant="secondary"
-                      className="glass-card text-xs sm:text-sm hover:shadow-glow-secondary transition-all duration-300 px-2 py-1"
+                      className="glass-card text-xs hover:shadow-glow-secondary transition-all duration-300"
                     >
                       {tech}
                     </Badge>
@@ -121,17 +121,8 @@ const ProjectsSection = () => {
                   {project.techStack.length > 3 && (
                     <Badge
                       variant="outline"
-                      className="glass-card text-xs sm:text-sm cursor-pointer hover:bg-primary/10 transition-all duration-300 px-2 py-1"
+                      className="glass-card text-xs cursor-pointer hover:bg-primary/10 transition-all duration-300"
                       onClick={() => toggleSkills(project.id)}
-                      tabIndex={0}
-                      role="button"
-                      aria-label={expandedSkills[project.id] ? 'Show fewer technologies' : `Show ${project.techStack.length - 3} more technologies`}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          toggleSkills(project.id);
-                        }
-                      }}
                     >
                       {expandedSkills[project.id]
                         ? 'Show Less'
@@ -141,31 +132,24 @@ const ProjectsSection = () => {
                   )}
                 </div>
 
-                {/* Action buttons with improved mobile layout */}
-                <div className="flex gap-2 sm:gap-3 mt-auto">
+                <div className="flex gap-3 mt-auto">
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-xs sm:text-sm py-2 sm:py-3"
+                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-xs"
                     onClick={() => handleProjectClick(project.githubUrl)}
-                    aria-label={`View source code for ${project.title}`}
-                    tabIndex={0}
                   >
-                    <GitBranch className="h-4 w-4 mr-1 sm:mr-2" />
-                    <span className="hidden xs:inline">Code</span>
-                    <span className="xs:hidden">Code</span>
+                    <Github className="h-4 w-4 mr-2" />
+                    Code
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-xs sm:text-sm py-2 sm:py-3"
+                    className="flex-1 glass-card hover:shadow-glow active:scale-95 text-xs"
                     onClick={() => handleProjectClick(project.liveUrl)}
-                    aria-label={`View live demo of ${project.title}`}
-                    tabIndex={0}
                   >
-                    <ExternalLink className="h-4 w-4 mr-1 sm:mr-2" />
-                    <span className="hidden xs:inline">Live</span>
-                    <span className="xs:hidden">Live</span>
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Live
                   </Button>
                 </div>
               </CardContent>
@@ -179,7 +163,7 @@ const ProjectsSection = () => {
             className="btn-neon text-sm sm:text-base"
             onClick={() => handleProjectClick('https://github.com/CodehubPriyanshu?tab=repositories')}
           >
-            <GitBranch className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+            <Github className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
             View All Projects on GitHub
           </Button>
         </div>
