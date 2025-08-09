@@ -57,7 +57,7 @@ const ProjectsSection = () => {
       description: "Real-time React Firebase chat app with authentication, media sharing, notifications, and responsive design",
       techStack: ["React 18", "ESLint + Prettier", "Firebase", "Vercel "],
       githubUrl: "https://github.com/CodehubPriyanshu/Chat-Application",
-      liveUrl: "https://chat-realtime.vercel.app",
+      liveUrl: "https://chat-web-app77.web.app/signin",
       featured: false
     },
     {
