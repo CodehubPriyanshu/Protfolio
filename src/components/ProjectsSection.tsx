@@ -35,11 +35,11 @@ const ProjectsSection = () => {
     },
     {
       id: 3,
-      title: "Sales Insights",
-      description: "Interactive Tableau dashboard with SQL insights for tracking revenue, profit, and market performance",
-      techStack: ["Interactive Tableau Dashboards", "SQL Data Analysis", "Data Modeling", "Star Schema",],
-      githubUrl: "https://github.com/CodehubPriyanshu/Sales-Data-Analysis-and-Insights",
-      liveUrl: "https://social-insights.herokuapp.com",
+      title: "Exploratory Data Analysis (EDA)",
+      description: "It's projects in Python, covering data cleaning, visualization, feature engineering, and machine learning across multiple datasets",
+      techStack: ["Python Libraries", "Data preprocessing", "feature engineering", "Regression","classification (KNN)", " interactive dashboards with Streamlit/Dash"],
+      githubUrl: "https://github.com/CodehubPriyanshu/Data-analysis-basic-project-EDA-base",
+      liveUrl: "https://colab.research.google.com/drive/1NeL-qiUfAGrqT5gLmjK00qtcSh5WPrdl?authuser=1",
       featured: false
     },
     {
@@ -48,7 +48,7 @@ const ProjectsSection = () => {
       description: "Interactive Power BI dashboard analyzing spending trends, categories, and habits with Python-cleaned data.",
       techStack: ["Microsoft Power BI Desktop", "Python", "Data Collection & Cleaning", "Power BI Modeling", "Dashboard Visualizations"],
       githubUrl: "https://github.com/CodehubPriyanshu/Finance-PowerBI-Dashboard",
-      liveUrl: "https://weather-predict.streamlit.app",
+      liveUrl: "https://app.powerbi.com/view?r=eyJrIjoiNTk4YWE0ZjMtN2U0ZS00MDBkLWFkOWYtYmU5ZDdhYzhhZDUxIiwidCI6ImU4NTYzNWI2LTFlMDItNDIzNy1iNDliLWY3NjllNTVkMzI4OSJ9",
       featured: false
     },
     {

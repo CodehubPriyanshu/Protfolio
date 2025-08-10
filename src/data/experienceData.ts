@@ -3,6 +3,9 @@ export type Experience = {
   role: string;
   duration: string;
   responsibilities: string[];
+  location: string; // Location for Google Maps link
+  companyIcon?: string; // Optional company icon URL
+  companyWebsite?: string; // Optional company website URL
 };
 
 export const experiences: Experience[] = [
@@ -11,10 +14,14 @@ export const experiences: Experience[] = [
     role: "Software Development Engineer",
     duration: "Jul 2024 – Present",
     responsibilities: [
-      "Build and optimize AI-driven portfolio applications.",
-      "Collaborated on the frontend in React and Tailwind.",
-      "Created backend email form logic with Nodemailer and Express.",
-      "Integrated dynamic project cards using data mapping logic.",
+      "Developed AI-powered apps for a startup, boosting productivity.",
+      "Deployed live projects: Dr. Kumar Laboratory, AyuChat.",
+      "Built responsive UIs with React & Tailwind CSS.",
+      "Implemented backend email logic using Nodemailer & Express.",
+      "Created dynamic project cards with data mapping."
     ],
+    location: "Remote, India", // TODO: Update with actual company location for Google Maps
+    companyIcon: "/placeholder.svg", // TODO: Replace with actual company icon/logo URL
+    companyWebsite: "https://agnistoka.com", // TODO: Replace with actual company website URL
   },
 ];

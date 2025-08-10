@@ -28,8 +28,8 @@ const AboutSection = () => {
     { name: "Node.js", icon: Server, color: "from-red-500 to-pink-500" },
     { name: "MongoDB", icon: Database, color: "from-yellow-500 to-orange-500" },
     { name: "MySQL", icon: Server, color: "from-green-600 to-green-400" },
-    { name: "Web Devlopment", icon: Database, color: "from-green-500 to-teal-500" },
-    { name: "Data Analysis", icon: Brain, color: "from-indigo-500 to-purple-500" },
+    { name: "Git/GitHub", icon: Database, color: "from-green-500 to-teal-500" },
+    { name: "Data Anlysis", icon: Brain, color: "from-indigo-500 to-purple-500" },
     { name: "Docker", icon: Code, color: "from-blue-600 to-blue-400" },
     { name: "AI/ML", icon: Globe, color: "from-cyan-500 to-blue-500" },
   ];
@@ -107,7 +107,7 @@ const AboutSection = () => {
 
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
                 <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold neon-text">20+</div>
+                  <div className="text-xl sm:text-2xl font-bold neon-text">15+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Projects</div>
                 </div>
                 <div className="text-center">

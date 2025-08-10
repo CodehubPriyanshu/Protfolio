@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send, MessageCircle, Instagram } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -13,7 +13,9 @@ const ContactSection = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    // Honeypot field to trap bots (should remain empty)
+    company: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -41,18 +43,18 @@ const ContactSection = () => {
 
       if (result.success) {
         toast({
-          title: "Message successfully sent!",
-          description: "Thank you for reaching out. I'll get back to you soon!",
+          title: "Thank you! Your message has been sent.",
+          description: "I'll get back to you soon.",
         });
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', subject: '', message: '', company: '' });
       } else {
         throw new Error(result.error || 'Failed to send message');
       }
     } catch (error) {
       console.error('Contact form error:', error);
       toast({
-        title: "Error sending message",
-        description: "Please try again later or contact me directly via email.",
+        title: "Oops! Something went wrong. Please try again.",
+        description: "If the problem persists, reach me at priyanshumails.bca2025@gmail.com",
         variant: "destructive",
       });
     } finally {
@@ -90,16 +92,16 @@ const ContactSection = () => {
     },
     {
       icon: Linkedin,
-      label: "LinkedIn", 
+      label: "LinkedIn",
       href: "https://www.linkedin.com/in/priyanshu-kumar-bca2025/",
       color: "hover:text-blue-600"
     },
-    // {
-    //   icon: Twitter,
-    //   label: "Twitter",
-    //   href: "https://twitter.com/priyanshu_dev",
-    //   color: "hover:text-blue-400"
-    // }
+    {
+      icon: Instagram,
+      label: "Instagram",
+      href: "https://www.instagram.com/priyanshu__y3/",
+      color: "hover:text-blue-400"
+    }
   ];
 
   return (
@@ -108,7 +110,7 @@ const ContactSection = () => {
       <div className="absolute inset-0 gradient-bg-secondary opacity-5"></div>
       <div className="absolute top-10 sm:top-20 right-4 sm:right-20 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-10 sm:bottom-20 left-4 sm:left-20 w-56 sm:w-80 h-56 sm:h-80 bg-accent-glow/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-      
+
       <div className="mobile-container mx-auto relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="mobile-heading mb-4">
@@ -250,6 +252,20 @@ const ContactSection = () => {
                         className="mobile-form-input resize-none"
                         required
                       />
+
+                      {/* Honeypot field for spam bots - hidden from users */}
+                      <div className="hidden" aria-hidden="true">
+                        <Label htmlFor="company">Company</Label>
+                        <Input
+                          id="company"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleInputChange}
+                          tabIndex={-1}
+                          autoComplete="off"
+                          placeholder="Leave this field empty"
+                        />
+                      </div>
                     </div>
 
                     <Button

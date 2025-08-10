@@ -1,12 +1,21 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download, ArrowDown, Camera } from "lucide-react";
+import { Github, Linkedin, Mail, Download, ArrowDown } from "lucide-react";
 import profileImage from "@/assets/profile.jpg";
-import { useState, useRef } from "react";
+import TypingAnimation from "@/components/TypingAnimation";
 
 const HeroSection = () => {
-  const [profileImageSrc, setProfileImageSrc] = useState(profileImage);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [showTypingAnimation, setShowTypingAnimation] = useState(true);
+  const [hasPlayedAnimation, setHasPlayedAnimation] = useState(false);
 
+  useEffect(() => {
+    // Check if animation has been played in this session
+    const animationPlayed = sessionStorage.getItem('heroAnimationPlayed');
+    if (animationPlayed) {
+      setShowTypingAnimation(false);
+      setHasPlayedAnimation(true);
+    }
+  }, []);
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -15,7 +24,7 @@ const HeroSection = () => {
   const handleDownloadCV = () => {
     // TODO: Upload resume link here
     // Replace the URL below with your actual resume file URL
-    const resumeUrl = '/path-to-your-resume.pdf';
+    const resumeUrl = 'https://drive.google.com/file/d/1nsJrEzuSYbQYySehWSlOvDQTYqs9eyOy/view?usp=drive_link';
 
     // Create a temporary link element and trigger download
     const link = document.createElement('a');
@@ -26,23 +35,13 @@ const HeroSection = () => {
     document.body.removeChild(link);
   };
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setProfileImageSrc(e.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const triggerFileInput = () => {
-    fileInputRef.current?.click();
+  const handleTypingComplete = () => {
+    sessionStorage.setItem('heroAnimationPlayed', 'true');
+    setHasPlayedAnimation(true);
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 lg:pt-0">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-32 lg:pt-0">
       {/* Animated background */}
       <div className="absolute inset-0 gradient-bg opacity-10"></div>
       
@@ -59,29 +58,15 @@ const HeroSection = () => {
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
           {/* Profile Section - centered on mobile */}
           <div className="text-center animate-slide-in-left order-1 lg:order-1">
-            <div className="relative w-48 h-56 sm:w-56 sm:h-64 lg:w-64 lg:h-80 xl:w-72 xl:h-96 mx-auto mb-6 sm:mb-8 group">
-              <div className="absolute inset-0 rounded-full bg-gradient-primary animate-glow"></div>
-              <div className="absolute inset-2 rounded-full overflow-hidden">
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 mx-auto mb-6 sm:mb-8">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-primary animate-glow"></div>
+              <div className="absolute inset-2 rounded-xl overflow-hidden">
                 <img
-                  src={profileImageSrc}
+                  src={profileImage}
                   alt="Priyanshu Kumar - Full Stack Developer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
-
-              {/* Upload overlay */}
-              <div className="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center cursor-pointer" onClick={triggerFileInput}>
-                <Camera className="h-8 w-8 text-white" />
-              </div>
-
-              {/* Hidden file input */}
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                className="hidden"
-              />
             </div>
             
             {/* Social Links - mobile optimized with glow effects */}
@@ -113,55 +98,51 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Intro Section - mobile-first responsive */}
-          <div className="space-y-6 animate-slide-in-right text-center lg:text-left order-2 lg:order-2">
-            <div className="space-y-4">
-              <div className="text-lg sm:text-xl text-muted-foreground mb-4">
-                👋 Hi, I'm
-              </div>
-              
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold">
-                <span className="block neon-text-glow">Priyanshu Kumar</span>
-              </h1>
-              
-              <div className="text-base sm:text-lg lg:text-xl xl:text-2xl text-muted-foreground space-y-1 sm:space-y-2">
-                <p className="animate-fade-in-up">Full Stack Developer</p>
-                <p className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>& AI Enthusiast</p>
-              </div>
-            </div>
+          {/* Intro Section - with typing animation or static content */}
+          <div className="animate-slide-in-right order-2 lg:order-2">
+            {showTypingAnimation && !hasPlayedAnimation ? (
+              <TypingAnimation
+                onComplete={handleTypingComplete}
+                onExploreClick={() => scrollToSection('projects')}
+                onDownloadClick={handleDownloadCV}
+              />
+            ) : (
+              <div className="space-y-6 text-center lg:text-left">
+                <div className="space-y-4">
+                  <div className="text-lg sm:text-xl text-muted-foreground mb-4">
+                    👋 Hi, I'm
+                  </div>
 
-            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed animate-fade-in-up max-w-lg mx-auto lg:mx-0" style={{ animationDelay: '0.4s' }}>
-              Passionate about creating innovative solutions that bridge the gap between
-              cutting-edge technology and real-world problems.
-            </p>
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold">
+                    <span className="neon-text-glow">Priyanshu Kumar</span>
+                  </h1>
+                </div>
 
-            {/* Tagline with special styling */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-              <div className="inline-block bg-black text-white px-4 py-2 rounded-lg border-2 border-white/20 shadow-lg">
-                <p className="text-sm sm:text-base lg:text-lg font-medium">
-                  Transforming data into insight, code into impact
+                <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0">
+                  Passionate about creating innovative solutions that bridge the gap between
+                  cutting-edge technology and real-world problems.
                 </p>
-              </div>
-            </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-              <Button 
-                className="btn-neon text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8"
-                onClick={() => scrollToSection('projects')}
-              >
-                Explore My Work
-                <ArrowDown className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-              </Button>
-              
-              <Button
-                variant="outline"
-                className="glass-card text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8 hover:shadow-glow"
-                onClick={handleDownloadCV}
-              >
-                <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                Download CV
-              </Button>
-            </div>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Button
+                    className="btn-neon text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8"
+                    onClick={() => scrollToSection('projects')}
+                  >
+                    Explore My Work
+                    <ArrowDown className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    className="glass-card text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8 hover:shadow-glow"
+                    onClick={handleDownloadCV}
+                  >
+                    <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                    Download CV
+                  </Button>
+                </div>
+              </div>
+            )}
 
             {/* Lightning bolt decoration - hidden on mobile */}
             <div className="absolute -top-10 right-10 opacity-20 hidden lg:block">

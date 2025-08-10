@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, User, FileText, Briefcase, Mail } from "lucide-react";
+import { Menu, X, Home, User, FileText, Briefcase, Mail, Download } from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +39,19 @@ const Navigation = () => {
     setIsOpen(false);
   };
 
+  const handleDownloadCV = () => {
+    // TODO: Update resume link here - Replace the URL below with your actual resume file URL
+    const resumeUrl = 'https://drive.google.com/file/d/1nsJrEzuSYbQYySehWSlOvDQTYqs9eyOy/view?usp=drive_link';
+
+    // Create a temporary link element and trigger download
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Priyanshu_Kumar_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       {/* Desktop Navigation */}
@@ -68,7 +81,7 @@ const Navigation = () => {
         <div className="glass-card m-4 mb-0 rounded-2xl">
           <div className="flex items-center justify-between p-4">
             <h1 className="text-lg font-bold neon-text">Priyanshu Kumar</h1>
-            
+
             <div className="flex items-center gap-3">
               <Button
                 variant="outline"
@@ -81,6 +94,18 @@ const Navigation = () => {
             </div>
           </div>
         </div>
+
+        {/* View Latest Resume Button - Mobile Only */}
+        <div className="mx-4 mt-2">
+          <Button
+            variant="outline"
+            className="w-full glass-card hover:shadow-glow text-sm font-medium py-3"
+            onClick={handleDownloadCV}
+          >
+            <Download className="mr-2 h-4 w-4" />
+            View Latest Resume
+          </Button>
+        </div>
       </header>
 
 
@@ -89,7 +114,7 @@ const Navigation = () => {
       {isOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
-          <div className="absolute top-20 left-4 right-4 glass-card p-6 rounded-2xl max-h-[80vh] overflow-y-auto">
+          <div className="absolute top-32 left-4 right-4 glass-card p-6 rounded-2xl max-h-[70vh] overflow-y-auto">
             <div className="space-y-2">
               {navItems.map((item) => (
                 <button

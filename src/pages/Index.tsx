@@ -7,6 +7,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import FloatingIcons from "@/components/FloatingIcons";
+import PersistentResumeIcon from "@/components/FloatingResumeUpload";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
 const Index = () => {
@@ -17,6 +18,9 @@ const Index = () => {
 
       {/* Floating Icons System */}
       <FloatingIcons />
+
+      {/* Persistent Resume Icon */}
+      <PersistentResumeIcon />
 
       <Navigation />
 
@@ -34,7 +38,10 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-black py-8 relative overflow-hidden border-t-2 border-white/20">
         <div className="container mx-auto px-6 text-center">
-          <div className="text-white">
+          <div className="text-white space-y-4">
+            <p className="text-lg sm:text-xl font-medium">
+              Transforming data into insight, code into impact
+            </p>
             <p className="text-sm sm:text-base font-medium">
               © 2025 built by Priyanshu Kumar
             </p>

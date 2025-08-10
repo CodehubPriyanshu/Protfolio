@@ -154,21 +154,28 @@ All colors MUST be HSL.
     transition: all 0.3s ease;
   }
 
-  /* Custom scrollbar */
+  /* Hide scrollbar completely while maintaining functionality */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 0px;
+    background: transparent;
   }
-  
+
   ::-webkit-scrollbar-track {
-    @apply bg-muted;
+    background: transparent;
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/30 rounded-full;
+    background: transparent;
   }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary/50;
+
+  /* For Firefox */
+  html {
+    scrollbar-width: none;
+  }
+
+  /* For IE and Edge */
+  body {
+    -ms-overflow-style: none;
   }
 }
 
