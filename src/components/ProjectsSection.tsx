@@ -6,12 +6,36 @@ import { useState } from "react";
 
 const ProjectsSection = () => {
   const [expandedSkills, setExpandedSkills] = useState<{ [key: number]: boolean }>({});
+  const [expandedDescriptions, setExpandedDescriptions] = useState<{ [key: number]: boolean }>({});
+
+  // Character limits for project descriptions
+  // TODO: Adjust these values as needed for your design preferences
+  const DESKTOP_CHAR_LIMIT = 30; // Desktop/tablet character limit
+  const MOBILE_CHAR_LIMIT = 8; // Mobile character limit (5-10 range)
 
   const toggleSkills = (projectId: number) => {
     setExpandedSkills(prev => ({
       ...prev,
       [projectId]: !prev[projectId]
     }));
+  };
+
+  const toggleDescription = (projectId: number) => {
+    setExpandedDescriptions(prev => ({
+      ...prev,
+      [projectId]: !prev[projectId]
+    }));
+  };
+
+  // Function to truncate description based on screen size and expansion state
+  const getTruncatedDescription = (description: string, projectId: number, isMobile: boolean) => {
+    const isExpanded = expandedDescriptions[projectId];
+    if (isExpanded) return description;
+
+    const charLimit = isMobile ? MOBILE_CHAR_LIMIT : DESKTOP_CHAR_LIMIT;
+    return description.length > charLimit
+      ? description.substring(0, charLimit) + '...'
+      : description;
   };
 
   const projects = [
@@ -94,16 +118,43 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className="project-card group h-full flex flex-col mobile-card"
+              className={`project-card group h-full flex flex-col mobile-card transition-all duration-300 ${
+                expandedDescriptions[project.id] ? 'project-card-expanded' : ''
+              }`}
               style={{ animationDelay: `${index * 100}ms` }}
+              onMouseEnter={() => window.innerWidth >= 640 && toggleDescription(project.id)} // Desktop hover expand
+              onMouseLeave={() => window.innerWidth >= 640 && toggleDescription(project.id)} // Desktop hover collapse
             >
-              <CardHeader className="p-4 sm:p-6 pb-3">{/* Removed charging icon section */}
-
+              <CardHeader className="p-4 sm:p-6 pb-3">
                 <CardTitle className="text-sm sm:text-base lg:text-lg xl:text-xl group-hover:neon-text transition-all duration-300 line-clamp-2">
                   {project.title}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground text-xs sm:text-sm lg:text-base line-clamp-2 sm:line-clamp-3">
-                  {project.description}
+
+                {/* Mobile description - clickable for expand/collapse */}
+                <CardDescription
+                  className={`project-description text-muted-foreground text-xs sm:text-sm lg:text-base cursor-pointer sm:cursor-default transition-all duration-300 sm:hidden ${
+                    expandedDescriptions[project.id] ? 'expanded' : ''
+                  }`}
+                  onClick={() => toggleDescription(project.id)} // Mobile click expand/collapse
+                >
+                  {getTruncatedDescription(project.description, project.id, true)}
+                  {project.description.length > MOBILE_CHAR_LIMIT && (
+                    <span className="text-primary/70 ml-1 text-xs">
+                      {expandedDescriptions[project.id] ? ' (tap to collapse)' : ' (tap to expand)'}
+                    </span>
+                  )}
+                </CardDescription>
+
+                {/* Desktop description - hover expand/collapse */}
+                <CardDescription
+                  className={`project-description text-muted-foreground text-xs sm:text-sm lg:text-base transition-all duration-300 hidden sm:block ${
+                    expandedDescriptions[project.id] ? 'expanded' : ''
+                  }`}
+                >
+                  {getTruncatedDescription(project.description, project.id, false)}
+                  {project.description.length > DESKTOP_CHAR_LIMIT && !expandedDescriptions[project.id] && (
+                    <span className="text-primary/70 ml-1 text-xs">(hover to expand)</span>
+                  )}
                 </CardDescription>
               </CardHeader>
 

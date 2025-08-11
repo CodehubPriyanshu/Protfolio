@@ -15,8 +15,8 @@ const PersistentResumeIcon = () => {
 
   return (
     <TooltipProvider>
-      {/* Persistent Main Icon - Always visible, no close option */}
-      <div className="fixed top-6 right-6 z-50">
+      {/* Persistent Main Icon - Hidden on mobile, visible on desktop only */}
+      <div className="fixed top-6 right-6 z-50 hidden lg:block">
         <Tooltip>
           <TooltipTrigger asChild>
             <Button

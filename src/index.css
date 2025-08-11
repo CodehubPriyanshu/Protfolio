@@ -268,6 +268,29 @@ All colors MUST be HSL.
     @apply hover:scale-[1.02] sm:hover:scale-105;
   }
 
+  /* Project card description expansion */
+  .project-description {
+    @apply transition-all duration-300 ease-in-out;
+    overflow: hidden;
+  }
+
+  .project-description.expanded {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Prevent layout shift during expansion */
+  .project-card-expanded {
+    @apply relative z-10;
+    transform: translateZ(0); /* Force hardware acceleration */
+  }
+
+  .project-card-expanded::before {
+    content: '';
+    @apply absolute inset-0 bg-background/80 backdrop-blur-sm rounded-xl;
+    z-index: -1;
+    box-shadow: var(--glow-strong);
+  }
+
   /* Line clamp utilities for better text truncation */
   .line-clamp-2 {
     display: -webkit-box;

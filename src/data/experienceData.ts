@@ -12,7 +12,7 @@ export const experiences: Experience[] = [
   {
     company: "Agnistoka Technology",
     role: "Software Development Engineer",
-    duration: "Jul 2024 – Present",
+    duration: "July 2024 – Present",
     responsibilities: [
       "Developed AI-powered apps for a startup, boosting productivity.",
       "Deployed live projects: Dr. Kumar Laboratory, AyuChat.",
@@ -20,7 +20,7 @@ export const experiences: Experience[] = [
       "Implemented backend email logic using Nodemailer & Express.",
       "Created dynamic project cards with data mapping."
     ],
-    location: "Remote, India", // TODO: Update with actual company location for Google Maps
+    location: "Hybrid, Gwalior, Madhya Pradesh, India", // TODO: Update with actual company location for Google Maps
     companyIcon: "/placeholder.svg", // TODO: Replace with actual company icon/logo URL
     companyWebsite: "https://agnistoka.com", // TODO: Replace with actual company website URL
   },
