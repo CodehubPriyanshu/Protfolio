@@ -5,6 +5,14 @@ import { GraduationCap, Calendar, MapPin } from "lucide-react";
 const ResumeSection = () => {
   const education = [
     {
+      level: "Post Graduation",
+      course: "Master of Computer Applications (MCA)",
+      institution: "Rustamji Institute of Technology",
+      location: "Tekanpur Gwalior, Madhya Pradesh",
+      year: "2025 - 2027",
+      subjects: ["AI Tools", "Data Sciences"]
+    },
+    {
       level: "Graduated",
       course: "Bachelor of Computer Applications (BCA)",
       institution: "ITM University",
@@ -20,14 +28,14 @@ const ResumeSection = () => {
       year: "2021 - 2022",
       subjects: ["Accountancy", "Business Studies", "Economics", "English", "Informatics Practices"]
     },
-    {
-      level: "Secondary (10th)",
-      course: "All Subjects",
-      institution: "Kendriya Vidyalaya No.3 ",
-      location: "Gwalior, Madhya Pradesh",
-      year: "2019 - 2020",
-      subjects: ["Mathematics", "Science", "Social Science", "English", "Hindi"]
-    }
+    // {
+    //   level: "Secondary (10th)",
+    //   course: "All Subjects",
+    //   institution: "Kendriya Vidyalaya No.3 ",
+    //   location: "Gwalior, Madhya Pradesh",
+    //   year: "2019 - 2020",
+    //   subjects: ["Mathematics", "Science", "Social Science", "English", "Hindi"]
+    // }
   ];
 
   return (
