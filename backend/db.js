@@ -15,10 +15,25 @@ let isDbEnabled = false;
 async function initDb() {
   try {
     if (!mongoose) return false;
+
+    // MONGODB_URI should be copied from your MongoDB Atlas → "Connect" dialog.
+    // Example:
+    //   mongodb+srv://<username>:<password>@<cluster-host>/?retryWrites=true&w=majority&appName=<app>
+    // Notes:
+    // - Keep the scheme mongodb+srv for Atlas.
+    // - Replace <username> and <password> with your database user credentials (NOT your Atlas account login).
+    // - You can specify the database name in one of two ways:
+    //   1) Set MONGODB_DB below (preferred for this code), OR
+    //   2) Append "/<dbName>" to the URI before the query string.
     const uri = process.env.MONGODB_URI;
     if (!uri) return false;
 
+    // If you see "Could not connect to any servers in your MongoDB Atlas cluster":
+    // - In Atlas, go to Network Access → IP Access List and add your current IP (or 0.0.0.0/0 for local dev).
+    // - Ensure your cluster is running (not paused).
+    // - Verify username/password and that the user has permission to the database.
     await mongoose.connect(uri, {
+      // Optionally set the DB to use; if not set, Mongoose will use the default database from the URI.
       dbName: process.env.MONGODB_DB || undefined,
     });
 
