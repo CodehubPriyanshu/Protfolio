@@ -115,42 +115,6 @@ const PopupNotification: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile-specific styles */}
-      <style jsx>{`
-        @media (max-width: 640px) {
-          .glass-card {
-            margin: 1rem;
-            padding: 1.5rem;
-          }
-        }
-        
-        /* Animation delay utilities */
-        .animation-delay-500 {
-          animation-delay: 0.5s;
-        }
-        
-        .animation-delay-1000 {
-          animation-delay: 1s;
-        }
-        
-        .animation-delay-1500 {
-          animation-delay: 1.5s;
-        }
-        
-        /* Enhanced responsive behavior */
-        @media (max-height: 600px) {
-          .fixed.top-1\\/2 {
-            top: 40%;
-          }
-        }
-        
-        /* Ensure popup is accessible on very small screens */
-        @media (max-width: 320px) {
-          .max-w-sm {
-            max-width: calc(100vw - 2rem);
-          }
-        }
-      `}</style>
     </>
   );
 };

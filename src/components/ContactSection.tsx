@@ -39,22 +39,45 @@ const ContactSection = () => {
         body: JSON.stringify(formData),
       });
 
+      // Check if the response is JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned non-JSON response. The API endpoint may not be available.');
+      }
+
       const result = await response.json();
 
-      if (result.success) {
+      if (response.ok && result.success) {
         toast({
-          title: "Thank you! Your message has been sent.",
-          description: "I'll get back to you soon.",
+          title: "✅ Message sent successfully!",
+          description: result.message || "I'll get back to you soon.",
         });
         setFormData({ name: '', email: '', subject: '', message: '', company: '' });
       } else {
-        throw new Error(result.error || 'Failed to send message');
+        // Handle API errors with specific messages
+        throw new Error(result.error || `Server error: ${response.status}`);
       }
     } catch (error) {
       console.error('Contact form error:', error);
+      
+      let errorTitle = "Oops! Something went wrong.";
+      let errorDescription = "Please try again later.";
+      
+      // Provide more specific error messages
+      if (error.message.includes('non-JSON response')) {
+        errorTitle = "API Endpoint Not Found";
+        errorDescription = "The contact form API is not properly configured. Please reach me directly at priyanshumails.bca2025@gmail.com";
+      } else if (error.message.includes('Failed to fetch')) {
+        errorTitle = "Connection Error";
+        errorDescription = "Please check your internet connection and try again.";
+      } else if (error.message.includes('required') || error.message.includes('Invalid')) {
+        errorTitle = "Validation Error";
+        errorDescription = error.message;
+      }
+      
       toast({
-        title: "Oops! Something went wrong. Please try again.",
-        description: "If the problem persists, reach me at priyanshumails.bca2025@gmail.com",
+        title: errorTitle,
+        description: errorDescription,
         variant: "destructive",
       });
     } finally {
