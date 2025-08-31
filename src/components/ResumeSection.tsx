@@ -10,7 +10,7 @@ const ResumeSection = () => {
       institution: "Rustamji Institute of Technology",
       location: "Tekanpur Gwalior, Madhya Pradesh",
       year: "2025 - 2027",
-      subjects: ["AI Tools", "Data Sciences"]
+      subjects: ["AI Tools", "Data-Driven","Knowledge Seeker"]
     },
     {
       level: "Graduated",
