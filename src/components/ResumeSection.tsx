@@ -10,7 +10,7 @@ const ResumeSection = () => {
       institution: "Rustamji Institute of Technology",
       location: "Tekanpur Gwalior, Madhya Pradesh",
       year: "2025 - 2027",
-      subjects: ["AI Tools", "Data-Driven","Knowledge Seeker"]
+      enthusiastic: ["AI Tools","Data Sciences"]
     },
     {
       level: "Graduated",
@@ -88,11 +88,12 @@ const ResumeSection = () => {
                         </div>
                         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
                           <div className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
-                            <span>{education[0]?.year}</span>
-                            <span className="mx-2">•</span>
                             <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
-                            <span>{education[0]?.location}</span>
+                            {education[0].location}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
+                            {education[0].year}
                           </div>
                         </div>
                       </div>
@@ -103,15 +104,15 @@ const ResumeSection = () => {
                 <CardContent className="space-y-4 sm:space-y-6">
                   {/* Key Subjects */}
                   <div>
-                    <h4 className="font-semibold mb-3 text-sm sm:text-base">Key Subjects</h4>
+                    <h4 className="font-semibold mb-3 text-sm sm:text-base">Enthusiastic to Learning</h4>
                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {(education[0]?.subjects || []).map((subject) => (
+                      {(education[0]?.enthusiastic || []).map((enthusiastic) => (
                         <Badge
-                          key={subject}
+                          key={enthusiastic}
                           variant="outline"
                           className="glass-card text-xs hover:shadow-glow-secondary transition-all duration-300"
                         >
-                          {subject}
+                          {enthusiastic}
                         </Badge>
                       ))}
                     </div>
