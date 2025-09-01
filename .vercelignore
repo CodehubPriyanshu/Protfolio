@@ -1,0 +1,60 @@
+# Dependencies
+node_modules
+*/node_modules
+
+# Build artifacts
+dist
+build
+.next
+
+# Development files
+src/**/*.test.ts
+src/**/*.test.tsx
+src/**/*.spec.ts
+src/**/*.spec.tsx
+*.log
+logs
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Backend development files (since we're using serverless functions)
+backend/
+setup-backend.js
+
+# Development config
+vite.config.ts.timestamp-*
+tsconfig.node.json
+
+# ESLint and other development tools
+eslint.config.js
+.eslintrc*
+
+# PostCSS config
+postcss.config.js
+
+# Tailwind config (include only if needed in build)
+# tailwind.config.ts
+
+# TypeScript config (include only if needed)
+# tsconfig.json
+
+# Lock files (npm will install from package.json)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
