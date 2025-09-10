@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "setup-backend": "node setup-backend.js",
     "start-backend": "cd backend && npm run dev",
-    "start-full": "concurrently \"npm run start-backend\" \"npm run dev\""
+    "start-full": "concurrently \"npm run start-backend\" \"npm run dev\"",
+    "build-check": "node build-check.js",
+    "deploy-check": "npm run build-check && npm run build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
