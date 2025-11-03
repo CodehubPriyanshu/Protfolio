@@ -21,7 +21,7 @@ export const personalInfo = {
   phone: "+91 8602062785",
   location: "Gwalior, Madhya Pradesh, India",
   bio: [
-    "I'm a passionate BCA student at ITM University with a deep love for technology and innovation. My journey in programming started with curiosity and has evolved into a commitment to creating impactful digital solutions.",
+    "I'm a passionate MCA student at Rustamji Institute of Technology from Gwalior with a deep love for technology and innovation. My journey in programming started with curiosity and has evolved into a commitment to creating impactful digital solutions.",
     "With expertise in modern web technologies like React, Python, and Flask, I enjoy building applications that solve real-world problems. I'm particularly interested in AI/ML and how it can enhance user experiences.",
     "When I'm not coding, you'll find me exploring new technologies, contributing to open source projects, or sharing knowledge with the developer community."
   ],
@@ -53,8 +53,7 @@ export const education = [
     institution: "ITM University",
     location: "Gwalior, Madhya Pradesh",
     year: "2022 - 2025",
-    grade: "8.5 CGPA",
-    achievements: [
+    grade: "8.5 CGPA",    achievements: [
       "Dean's List for Academic Excellence",
       "Winner - University Coding Competition 2023",
       "Active member of Programming Club"
