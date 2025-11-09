@@ -39,8 +39,8 @@ export const skills = [
   { name: "JavaScript", icon: Globe, color: "from-yellow-500 to-orange-500" },
   { name: "Node.js", icon: Server, color: "from-green-600 to-green-400" },
   { name: "MongoDB", icon: Database, color: "from-green-500 to-teal-500" },
-  { name: "Mobile Development", icon: Smartphone, color: "from-purple-500 to-pink-500" },
-  { name: "AI/ML", icon: Brain, color: "from-indigo-500 to-purple-500" },
+  { name: "Docker", icon: Smartphone, color: "from-purple-500 to-pink-500" },
+  { name: "AWS", icon: Brain, color: "from-indigo-500 to-purple-500" },
   { name: "TypeScript", icon: Code, color: "from-blue-600 to-blue-400" },
   { name: "Tailwind CSS", icon: Globe, color: "from-cyan-500 to-blue-500" },
 ];

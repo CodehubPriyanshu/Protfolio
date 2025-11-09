@@ -21,19 +21,19 @@ const HeroSection = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleDownloadCV = () => {
-    // TODO: Upload resume link here
-    // Replace the URL below with your actual resume file URL
-    const resumeUrl = 'https://drive.google.com/file/d/1nsJrEzuSYbQYySehWSlOvDQTYqs9eyOy/view?usp=drive_link';
+ const handleDownloadCV = () => {
+  // Convert your Google Drive link to a direct download link
+  const resumeUrl = 'https://drive.google.com/uc?export=download&id=1tmhH55s_D8ZQ1Bf8jJn6nDWLFcUPR-Ak';
 
-    // Create a temporary link element and trigger download
-    const link = document.createElement('a');
-    link.href = resumeUrl;
-    link.download = 'Priyanshu_Kumar_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  // Create a temporary link element to trigger the file download
+  const link = document.createElement('a');
+  link.href = resumeUrl;
+  link.download = 'Priyanshu_Kumar_Resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 
   const handleTypingComplete = () => {
     sessionStorage.setItem('heroAnimationPlayed', 'true');
