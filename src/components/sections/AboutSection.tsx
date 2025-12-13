@@ -88,20 +88,11 @@ const AboutSection = () => {
 
               <div className="space-y-3 sm:space-y-4 text-muted-foreground text-sm sm:text-base">
                 <p>
-                  I'm a passionate BCA student at ITM University with a deep love for technology 
-                  and innovation. My journey in programming started with curiosity and has evolved 
-                  into a commitment to creating impactful digital solutions.
+                 I’m a continuous learner with a strong interest in web development and data analytics, developed during my bachelor’s journey. I’m currently pursuing an MCA to strengthen my technical foundation and deepen my understanding of modern technologies.
                 </p>
                 
                 <p>
-                  With expertise in modern web technologies like React, Python, and Flask, 
-                  I enjoy building applications that solve real-world problems. I'm particularly 
-                  interested in AI/ML and how it can enhance user experiences.
-                </p>
-                
-                <p className="hidden sm:block">
-                  When I'm not coding, you'll find me exploring new technologies, contributing 
-                  to open source projects, or sharing knowledge with the developer community.
+                  Alongside my studies, I work as a Software Development Engineer at a startup in Gwalior, where I gain hands-on experience, collaborate with teams, and take part in leading projects. I also explore emerging AI platforms to improve efficiency and enjoy working with others to keep learning and growing.
                 </p>
               </div>
 

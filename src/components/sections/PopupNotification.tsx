@@ -10,8 +10,8 @@ const PopupNotification: React.FC = () => {
     message: "Click on the floating icon to see my certifications in the career right",
     
     // ⏱️ TIMING CONFIGURATION (in milliseconds) ⏱️
-    showDelay: 3000, // 7 seconds delay before showing
-    autoHideDelay: 8000, // Auto hide after 8 seconds of being visible
+    showDelay: 1000, // 3 seconds delay before showing (fixed from 0000)
+    autoHideDelay: 3000, // Auto hide after 5 seconds of being visible
     
     // 🎨 VISUAL CONFIGURATION 🎨
     showActionHint: true, // Show the "Look for the floating icon" hint

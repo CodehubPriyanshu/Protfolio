@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download, ArrowDown } from "lucide-react";
-import profileImage from "@/assets/profile.jpg";
-import TypingAnimation from "@/components/TypingAnimation";
+import profileImage from "@/assets/profile.png";
+import TypingAnimation from "@/components/sections/TypingAnimation";
 
 const HeroSection = () => {
   const [showTypingAnimation, setShowTypingAnimation] = useState(true);
@@ -58,43 +58,12 @@ const HeroSection = () => {
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
           {/* Profile Section - centered on mobile */}
           <div className="text-center animate-slide-in-left order-1 lg:order-1">
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 mx-auto mb-6 sm:mb-8">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-primary animate-glow"></div>
-              <div className="absolute inset-2 rounded-xl overflow-hidden">
-                <img
-                  src={profileImage}
-                  alt="Priyanshu Kumar - Full Stack Developer"
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
-            </div>
-            
-            {/* Social Links - mobile optimized with glow effects */}
-            <div className="flex justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <Button
-                variant="outline"
-                size="icon"
-                className="glass-card hover:shadow-[var(--glow-strong)] hover:border-primary/50 hover:bg-primary/10 active:scale-95 h-10 w-10 sm:h-12 sm:w-12 transition-all duration-300"
-                onClick={() => window.open('https://github.com/CodehubPriyanshu', '_blank')}
-              >
-                <Github className="h-4 w-4 sm:h-5 sm:w-5 hover:text-primary transition-colors duration-300" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="glass-card hover:shadow-[var(--glow-strong)] hover:border-primary/50 hover:bg-primary/10 active:scale-95 h-10 w-10 sm:h-12 sm:w-12 transition-all duration-300"
-                onClick={() => window.open('https://www.linkedin.com/in/priyanshu-kumar-bca2025/', '_blank')}
-              >
-                <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 hover:text-primary transition-colors duration-300" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="glass-card hover:shadow-[var(--glow-strong)] hover:border-primary/50 hover:bg-primary/10 active:scale-95 h-10 w-10 sm:h-12 sm:w-12 transition-all duration-300"
-                onClick={() => window.open('mailto:priyanshumails.bca2025@gmail.com', '_blank')}
-              >
-                <Mail className="h-4 w-4 sm:h-5 sm:w-5 hover:text-primary transition-colors duration-300" />
-              </Button>
+            <div className="relative w-44 h-44 sm:w-52 sm:h-52 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto mb-6 sm:mb-8 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg shadow-primary/20 flex items-center justify-center">
+              <img
+                src={profileImage}
+                alt="Priyanshu Kumar - Full Stack Developer"
+                className="w-full h-full object-cover mix-blend-lighten scale-105 flex-shrink-0 translate-z-0 aspect-square"
+              />
             </div>
           </div>
 

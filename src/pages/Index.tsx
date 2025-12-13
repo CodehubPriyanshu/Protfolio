@@ -1,15 +1,15 @@
-import Navigation from "@/components/Navigation";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ResumeSection from "@/components/ResumeSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import ContactSection from "@/components/ContactSection";
-import AnimatedBackground from "@/components/AnimatedBackground";
-import FloatingIcons from "@/components/FloatingIcons";
-import PersistentResumeIcon from "@/components/FloatingResumeUpload";
-import PopupNotification from "@/components/PopupNotification";
-import ErrorBoundary from "@/components/ErrorBoundary";
+import Navigation from "@/components/sections/Navigation";
+import HeroSection from "@/components/sections/HeroSection";
+import AboutSection from "@/components/sections/AboutSection";
+import ResumeSection from "@/components/sections/ResumeSection";
+import ExperienceSection from "@/components/sections/ExperienceSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+import ContactSection from "@/components/sections/ContactSection";
+import AnimatedBackground from "@/components/sections/AnimatedBackground";
+import FloatingIcons from "@/components/sections/FloatingIcons";
+import PersistentResumeIcon from "@/components/sections/FloatingResumeUpload";
+import PopupNotification from "@/components/sections/PopupNotification";
+import ErrorBoundary from "@/components/sections/ErrorBoundary";
 
 const Index = () => {
   return (
