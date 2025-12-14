@@ -21,7 +21,7 @@ export const experiences: Experience[] = [
       "Built a short-term project related to webinars.",
     ],
     location: "Hybrid, Gwalior, Madhya Pradesh, India", // TODO: Update with actual company location for Google Maps
-    companyIcon: "/public/building.png", // TODO: Replace with actual company icon/logo URL
+    companyIcon: "src/assets/building.png", // TODO: Replace with actual company icon/logo URL
     companyWebsite: "https://agnistokatechnology.com/?utm_source=ig&utm_medium=social&utm_content=link_in_bio", // TODO: Replace with actual company website URL
   },
 ];
