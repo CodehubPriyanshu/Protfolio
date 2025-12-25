@@ -12,12 +12,12 @@ export const experiences: Experience[] = [
   {
     company: "Agnistoka Technology",
     role: "Software Development Engineer",
-    duration: "July 2025 – Present",
+    duration: "July 2025 – December 2025",
     responsibilities: [
       "Developed live projects including Dr. Kumar Laboratory and AyuChat",
       "Collaborated with team members to strengthen development skills",
       "Gained hands-on experience in frontend and backend development",
-      "Worked with React, Node.js, and Python",
+      "Worked with React, Node.js, Python and with gain the hand on experience in Next.js",
       "Built a short-term project related to webinars.",
     ],
     location: "Hybrid, Gwalior, Madhya Pradesh, India", // TODO: Update with actual company location for Google Maps

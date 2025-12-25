@@ -8,7 +8,7 @@ import ContactSection from "@/components/sections/ContactSection";
 import AnimatedBackground from "@/components/sections/AnimatedBackground";
 import FloatingIcons from "@/components/sections/FloatingIcons";
 import PersistentResumeIcon from "@/components/sections/FloatingResumeUpload";
-import PopupNotification from "@/components/sections/PopupNotification";
+import LeftToastNotification from "@/components/sections/LeftToastNotification";
 import ErrorBoundary from "@/components/sections/ErrorBoundary";
 
 const Index = () => {
@@ -23,8 +23,8 @@ const Index = () => {
       {/* Persistent Resume Icon */}
       <PersistentResumeIcon />
 
-      {/* Popup Notification - appears 7 seconds after page load */}
-      <PopupNotification />
+      {/* Left Toast Notification - appears after page load */}
+      <LeftToastNotification />
 
       <Navigation />
 
