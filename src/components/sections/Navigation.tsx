@@ -2,28 +2,28 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Home, User, FileText, Briefcase, Mail, Download } from "lucide-react";
 
+const NAV_ITEMS = [
+  { id: 'hero', label: 'Home', icon: Home },
+  { id: 'about', label: 'About', icon: User },
+  { id: 'resume', label: 'Education', icon: FileText },
+  { id: 'experience', label: 'Experience', icon: Briefcase },
+  { id: 'projects', label: 'Projects', icon: Briefcase },
+  { id: 'contact', label: 'Contact', icon: Mail },
+];
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
 
-  const navItems = [
-    { id: 'hero', label: 'Home', icon: Home },
-    { id: 'about', label: 'About', icon: User },
-    { id: 'resume', label: 'Education', icon: FileText },
-    { id: 'experience', label: 'Experience', icon: Briefcase },
-    { id: 'projects', label: 'Projects', icon: Briefcase },
-    { id: 'contact', label: 'Contact', icon: Mail },
-  ];
-
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => document.getElementById(item.id));
+      const sections = NAV_ITEMS.map(item => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id);
+          setActiveSection(NAV_ITEMS[i].id);
           break;
         }
       }
@@ -41,7 +41,7 @@ const Navigation = () => {
 
   const handleDownloadCV = () => {
     // TODO: Update resume link here - Replace the URL below with your actual resume file URL
-    const resumeUrl = 'https://drive.google.com/file/d/1nsJrEzuSYbQYySehWSlOvDQTYqs9eyOy/view?usp=drive_link';
+    const resumeUrl = 'https://drive.google.com/file/d/1sy4kgWxQLtrGumCXI400_8zRPVcm5jfT/view?usp=drive_link';
 
     // Create a temporary link element and trigger download
     const link = document.createElement('a');
@@ -58,7 +58,7 @@ const Navigation = () => {
       <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 hidden lg:block">
         <div className="glass-card px-6 py-3">
           <div className="flex items-center gap-6">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
@@ -116,7 +116,7 @@ const Navigation = () => {
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
           <div className="absolute top-32 left-4 right-4 glass-card p-6 rounded-2xl max-h-[70vh] overflow-y-auto">
             <div className="space-y-2">
-              {navItems.map((item) => (
+              {NAV_ITEMS.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}

@@ -1,11 +1,17 @@
+export type Responsibility = {
+  text: string;
+  linkText?: string;
+  linkUrl?: string;
+};
+
 export type Experience = {
   company: string;
   role: string;
   duration: string;
-  responsibilities: string[];
-  location: string; // Location for Google Maps link
-  companyIcon?: string; // Optional company icon URL
-  companyWebsite?: string; // Optional company website URL
+  responsibilities: Responsibility[];
+  location: string;
+  companyIcon?: string;
+  companyWebsite?: string;
 };
 
 export const experiences: Experience[] = [
@@ -14,14 +20,26 @@ export const experiences: Experience[] = [
     role: "Software Development Engineer",
     duration: "July 2025 – December 2025",
     responsibilities: [
-      "Developed live projects including Dr. Kumar Laboratory and AyuChat",
-      "Collaborated with team members to strengthen development skills",
-      "Gained hands-on experience in frontend and backend development",
-      "Worked with React, Node.js, Python and with gain the hand on experience in Next.js",
-      "Built a short-term project related to webinars.",
+      {
+        text: "Developed live production projects including",
+        linkText: "Dr. Kumar Laboratory",
+        linkUrl: "https://drkumarlaboratories.com/",
+      },
+      {
+        text: "Collaborated with cross-functional team members to improve development workflows and debugging skills.",
+      },
+      {
+        text: "Worked on both frontend and backend features using React, Node.js, and Python.",
+      },
+      {
+        text: "Gained hands-on experience with Next.js, focusing on reusable components and performance optimization.",
+      },
+      {
+        text: "Built a short-term webinar management project and worked on admin panel features including Shiprocket integration.",
+      },
     ],
-    location: "Hybrid, Gwalior, Madhya Pradesh, India", // TODO: Update with actual company location for Google Maps
-    companyIcon: "src/assets/building.png", // TODO: Replace with actual company icon/logo URL
-    companyWebsite: "https://agnistokatechnology.com/?utm_source=ig&utm_medium=social&utm_content=link_in_bio", // TODO: Replace with actual company website URL
+    location: "Hybrid, Gwalior, Madhya Pradesh, India",
+    companyIcon: "src/assets/building.png",
+    companyWebsite: "https://agnistokatechnology.com",
   },
 ];

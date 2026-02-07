@@ -47,7 +47,7 @@ const Index = () => {
               Transforming data into insight, code into impact
             </p>
             <p className="text-sm sm:text-base font-medium">
-              © 2025 built by Priyanshu Kumar
+              © built by Priyanshu Kumar
             </p>
           </div>
         </div>

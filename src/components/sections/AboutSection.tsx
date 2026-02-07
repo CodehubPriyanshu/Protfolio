@@ -24,12 +24,12 @@ const AboutSection = () => {
   const skills = [
     { name: "Python", icon: Code, color: "from-blue-500 to-cyan-500" },
     { name: "React Js", icon: Code, color: "from-green-500 to-blue-500" },
-    { name: "Vibe Coding", icon: Globe, color: "from-indigo-500 to-purple-500" },
-    { name: "Node.js", icon: Server, color: "from-red-500 to-pink-500" },
-    { name: "MongoDB", icon: Database, color: "from-yellow-500 to-orange-500" },
-    { name: "MySQL", icon: Server, color: "from-green-600 to-green-400" },
-    { name: "Git/GitHub", icon: Database, color: "from-green-500 to-teal-500" },
-    { name: "Data Anlysis", icon: Brain, color: "from-indigo-500 to-purple-500" },
+    // { name: "Vibe Coding", icon: Globe, color: "from-indigo-500 to-purple-500" },
+    { name: "MERN Stack", icon: Server, color: "from-red-500 to-pink-500" },
+    { name: "MySQL", icon: Database, color: "from-yellow-500 to-orange-500" },
+    { name: "Git/GitHub", icon: Server, color: "from-green-600 to-green-400" },
+    { name: "Data Anlysis", icon: Database, color: "from-green-500 to-teal-500" },
+    { name: "AI/ML", icon: Brain, color: "from-indigo-500 to-purple-500" },
     { name: "Docker", icon: Code, color: "from-blue-600 to-blue-400" },
     { name: "AWS", icon: Globe, color: "from-cyan-500 to-blue-500" },
   ];
