@@ -9,8 +9,8 @@ const ResumeSection = () => {
       course: "Master of Computer Applications (MCA)",
       institution: "Rustamji Institute of Technology",
       location: "Tekanpur Gwalior, Madhya Pradesh",
-      year: "2025 - 2027",
-      enthusiastic: ["Exploring AI Tools"]
+      year: "2025 - Present",
+      enthusiastic: ["Exploring AI field"]
     },
     {
       level: "Graduated",
@@ -18,7 +18,7 @@ const ResumeSection = () => {
       institution: "ITM University",
       location: "Gwalior, Madhya Pradesh",
       year: "2022 - 2025",
-      subjects: ["Software Engineering", "Data Analytics", "Database Management", "Web Development", "AI/ML Fundamentals"]
+      subjects: ["Data Structures and Algorithms", "Data Analytics", "Database Management", "Web Development", "AI/ML Fundamentals"]
     },
     {
       level: "Higher Secondary (12th)",
