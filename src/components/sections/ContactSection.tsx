@@ -89,8 +89,8 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "priyanshumails.bca2025@gmail.com",
-      href: "mailto:priyanshumails.bca2025@gmail.com"
+      value: "priyanshumails.mca2027@gmail.com",
+      href: "mailto:priyanshumails.mca2027@gmail.com"
     },
     {
       icon: Phone,
@@ -101,7 +101,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       label: "Location",
-      value: "Gwalior, Madhya Pradesh, India",
+      value: "Tekanpur, Gwalior,Madhya Pradesh, India",
       href: "#"
     }
   ];

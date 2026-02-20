@@ -98,7 +98,7 @@ const AboutSection = () => {
 
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
                 <div className="text-center">
-                  <div className="text-xl sm:text-2xl font-bold neon-text">15+</div>
+                  <div className="text-xl sm:text-2xl font-bold neon-text">25+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Projects</div>
                 </div>
                 <div className="text-center">

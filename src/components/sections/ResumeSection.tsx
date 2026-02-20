@@ -5,7 +5,7 @@ import { GraduationCap, Calendar, MapPin } from "lucide-react";
 const ResumeSection = () => {
   const education = [
     {
-      level: "Post Graduation",
+      level: "Pursing Post Graduation",
       course: "Master of Computer Applications (MCA)",
       institution: "Rustamji Institute of Technology",
       location: "Tekanpur Gwalior, Madhya Pradesh",
@@ -13,7 +13,7 @@ const ResumeSection = () => {
       enthusiastic: ["Exploring AI field"]
     },
     {
-      level: "Graduated",
+      level: "Completed Graduated",
       course: "Bachelor of Computer Applications (BCA)",
       institution: "ITM University",
       location: "Gwalior, Madhya Pradesh",
