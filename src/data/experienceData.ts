@@ -12,12 +12,13 @@ export type Experience = {
   location: string;
   companyIcon?: string;
   companyWebsite?: string;
+  iconSize?: 'sm' | 'md' | 'lg';
 };
 
 export const experiences: Experience[] = [
   {
     company: "Agnistoka Technology",
-    role: "Software Development Engineer",
+    role: "Junior Software Developer",
     duration: "July 2025 – December 2025",
     responsibilities: [
       {
@@ -39,7 +40,28 @@ export const experiences: Experience[] = [
       },
     ],
     location: "Hybrid, Gwalior, Madhya Pradesh, India",
-    companyIcon: "src/assets/building.png",
+    companyIcon: "src/assets/at-logo.png",
     companyWebsite: "https://agnistokatechnology.com",
+    iconSize: "lg",
   },
+  {
+    company: "Career Mantra",
+    role: "Web Developer",
+    duration: "December 2025 – Present",
+    responsibilities: [
+      {
+        text: "Working on task management systems and lead management system with database integration.",
+      },
+      {
+        text: "Built admission landing pages capturing student leads using secure databases and NeoDove API.",
+      },
+      {
+        text: "Developing PHP projects with hands-on experience in deploying applications on MilesWeb hosting",
+      },
+    ],
+    location: "On-site, City Center Gwalior",
+    companyIcon: "src/assets/cm logo.png",
+    companyWebsite: "https://careermantra.net/",
+    iconSize: "md",
+  }
 ];

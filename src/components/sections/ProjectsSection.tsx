@@ -183,7 +183,8 @@ const ProjectsSection = () => {
                   )}
                 </div>
 
-                <div className="flex gap-3 mt-auto">
+                {/* Desktop view: Text + Icon buttons */}
+                <div className="hidden sm:flex gap-3 mt-auto">
                   <Button
                     variant="outline"
                     size="sm"
@@ -201,6 +202,28 @@ const ProjectsSection = () => {
                   >
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Live
+                  </Button>
+                </div>
+
+                {/* Mobile view: Icon-only buttons */}
+                <div className="flex sm:hidden gap-2 mt-auto">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1 glass-card hover:shadow-glow active:scale-95 p-2 flex items-center justify-center"
+                    onClick={() => handleProjectClick(project.githubUrl)}
+                    title="View source code on GitHub"
+                  >
+                    <Github className="h-5 w-5" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1 glass-card hover:shadow-glow active:scale-95 p-2 flex items-center justify-center"
+                    onClick={() => handleProjectClick(project.liveUrl)}
+                    title="View live project"
+                  >
+                    <ExternalLink className="h-5 w-5" />
                   </Button>
                 </div>
               </CardContent>
