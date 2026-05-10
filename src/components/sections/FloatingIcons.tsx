@@ -34,10 +34,10 @@ const FloatingIcons = () => {
   const iconData = [
     { icon: Code2, label: "Web Development", url: "https://drive.google.com/file/d/1oDyb51rQZ3xUzBMKRviyoxyP2lVNMF3r/view?usp=drive_link" },
     { icon: Database, label: "Data Analysis", url: "https://drive.google.com/file/d/1x7hjoY9gz1EYDWj0XqWM-TDRM2kFXQr9/view?usp=drive_link" },
-    { icon: Brain, label: "AWS", url: "https://drive.google.com/file/d/1kQnnOrvZkkGxS2E4xtCnJDnmgyU9dr74/view?usp=drive_link" },
-    { icon: Cloud, label: "Goggle Cloud", url: "https://www.credential.net/8fe11c38-23dc-42d4-b641-fc6ead8195ab" },
+    { icon: Brain, label: "AWS", url: "https://www.credly.com/badges/3bde5aff-5ea7-4d63-a20c-0ac402ad34a9/public_url" },
+    { icon: Cloud, label: "Google Cloud", url: "https://www.credential.net/8fe11c38-23dc-42d4-b641-fc6ead8195ab" },
     { icon: BarChart3, label: "Data Visualization", url: "https://drive.google.com/file/d/1ggt14QPdL1vfEggtjuX8VlM7gSqKd5Mz/view?usp=drive_link" },
-    { icon: Database, label: "MySQL and Satistics", url: "https://drive.google.com/file/d/1ryFzi1DQyh2L5x8ZyTnXGnKG-wFlZgFt/view?usp=drive_link" },
+    { icon: Database, label: "MySQL and Statistics", url: "https://drive.google.com/file/d/1ryFzi1DQyh2L5x8ZyTnXGnKG-wFlZgFt/view?usp=drive_link" },
     { icon: Globe, label: "React", url: "https://drive.google.com/file/d/1nF0ICTTIQwTUQdMQU8Fb65vRVklNkfkk/view?usp=drive_link" },
     { icon: Zap, label: "ChatGPT Prompt Engineering for Developers", url: "https://learn.deeplearning.ai/accomplishments/07c2f1f7-7d30-4b96-bfc2-7269af5c273c?usp=sharing" },
   ];
