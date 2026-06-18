@@ -23,7 +23,7 @@ const HeroSection = () => {
 
  const handleDownloadCV = () => {
   // Convert your Google Drive link to a direct download link
-  const resumeUrl = 'https://drive.google.com/file/d/1bAdUOMc1IaBPFiCzFUBmwm_Kp_wpr1Pj/view?usp=drive_link';
+  const resumeUrl = 'https://drive.google.com/file/d/19rzSNZJx8WO5pdhCBG9utYVOqnQdb4Ul/view?usp=sharing';
 
   // Create a temporary link element to trigger the file download
   const link = document.createElement('a');
