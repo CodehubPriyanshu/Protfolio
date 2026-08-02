@@ -1,5 +1,6 @@
+# API redirects (if using Netlify Functions)
+# Must come BEFORE the catch-all so /api/contact hits the function
+/api/*  /.netlify/functions/:splat  200
+
 # Redirect all requests to index.html for client-side routing
 /*    /index.html   200
-
-# API redirects (if using Netlify Functions)
-/api/*  /.netlify/functions/:splat  200

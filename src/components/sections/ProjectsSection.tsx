@@ -41,11 +41,11 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: "Promptify",
-      description: "Full-stack AI prompt builder with modular design, API integrations, and smooth deployment features",
-      techStack: ["React", "TypeScripts", "Node.js", "Razorpay", "OpenAI / Anthropic API integration"],
-      githubUrl: "https://github.com/CodehubPriyanshu/Promptify",
-      liveUrl: "https://promptify-henna-zeta.vercel.app/",
+      title: "Faces-Recognition-Gate-System",
+      description: "Developed a Face Recognition Gate System for BSF STC Bengaluru to securely manage gate entry and exit verification using React, TanStack Start, Supabase, and facial authentication.",
+      techStack: ["React", "TypeScripts", "TanStack","Supabase" ],
+      githubUrl: "https://github.com/CodehubPriyanshu/Faces-Recognition-Gate-System",
+      liveUrl: "https://celadon-scone-f6a656.netlify.app/login",
       featured: true
     },
     {
@@ -54,7 +54,7 @@ const ProjectsSection = () => {
       description: "AI sentiment analysis app with React frontend, Flask backend, secure configs, and scalable deployment",
       techStack: ["React", "MongoDB Atlas", "flask", "Axios", "JWT Authentication"],
       githubUrl: "https://github.com/CodehubPriyanshu/SentimentSage",
-      liveUrl: "https://sentiment-sage42984.vercel.app/",
+      liveUrl: "sentiment-sage42984.netlify.app/",
       featured: true
     },
     {
@@ -84,15 +84,15 @@ const ProjectsSection = () => {
       liveUrl: "https://chat-web-app77.web.app/signin",
       featured: false
     },
-    {
-      id: 6,
-      title: "HireHub-Job Portal",
-      description: "MERN-based job portal with search, tracking, role-based access, secure authentication, and cloud deployment.",
-      techStack: ["React Router", "Cloudinary", "React Toastify", "Nodemailer", "bcrypt"],
-      githubUrl: "https://github.com/CodehubPriyanshu/HireHub-JobPortal-",
-      liveUrl: "https://hire-hub-job-portal-es2a-m70kt2t27-codehubpriyanshus-projects.vercel.app/",
-      featured: true
-    }
+    // {
+    //   id: 6,
+    //   title: "HireHub-Job Portal",
+    //   description: "MERN-based job portal with search, tracking, role-based access, secure authentication, and cloud deployment.",
+    //   techStack: ["React Router", "Cloudinary", "React Toastify", "Nodemailer", "bcrypt"],
+    //   githubUrl: "https://github.com/CodehubPriyanshu/HireHub-JobPortal-",
+    //   liveUrl: "https://hire-hub-job-portal-es2a-m70kt2t27-codehubpriyanshus-projects.vercel.app/",
+    //   featured: true
+    // }
   ];
 
   const handleProjectClick = (url: string) => {

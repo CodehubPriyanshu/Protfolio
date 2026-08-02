@@ -17,6 +17,43 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
+    company: "MB Trader",
+    role: "Algo Trader Developer (Freelancer)",
+    duration: "July 2026 – Present",
+    responsibilities: [
+      {
+        text: "Developed Python-based automation tools to monitor NSE and BSE websites, tracking company announcements and delivery position updates, and generating real-time alerts for faster trading decisions.",
+      },
+      {
+        text: "Built an automated copy trading system using Zerodha Kite Connect APIs to execute buy and sell orders across multiple client accounts based on master account activities.",
+      },
+      {
+        text: "Implemented portfolio allocation and risk management logic to calculate investment percentages, distribute orders according to client portfolio values, and automate trade execution with improved accuracy.",
+      },
+    ],
+    location: "Hybrid, Chetakpuri Gwalior",
+  },
+  {
+    company: "Career Mantra",
+    role: "Web Developer",
+    duration: "December 2025 – June 2026",
+    responsibilities: [
+      {
+        text: "Working on task management systems and lead management system with database integration.",
+      },
+      {
+        text: "Built admission landing pages capturing student leads using secure databases and NeoDove API.",
+      },
+      {
+        text: "Developing PHP projects with hands-on experience in deploying applications on MilesWeb hosting",
+      },
+    ],
+    location: "Hybrid, City Center Gwalior",
+    companyIcon: "src/assets/cm logo.png",
+    companyWebsite: "https://careermantra.net/",
+    iconSize: "md",
+  },
+  {
     company: "Agnistoka Technology",
     role: "Junior Software Developer",
     duration: "July 2025 – December 2025",
@@ -43,25 +80,5 @@ export const experiences: Experience[] = [
     companyIcon: "src/assets/at-logo.png",
     companyWebsite: "https://agnistokatechnology.com",
     iconSize: "lg",
-  },
-  {
-    company: "Career Mantra",
-    role: "Web Developer",
-    duration: "December 2025 – Present",
-    responsibilities: [
-      {
-        text: "Working on task management systems and lead management system with database integration.",
-      },
-      {
-        text: "Built admission landing pages capturing student leads using secure databases and NeoDove API.",
-      },
-      {
-        text: "Developing PHP projects with hands-on experience in deploying applications on MilesWeb hosting",
-      },
-    ],
-    location: "On-site, City Center Gwalior",
-    companyIcon: "src/assets/cm logo.png",
-    companyWebsite: "https://careermantra.net/",
-    iconSize: "md",
   }
 ];

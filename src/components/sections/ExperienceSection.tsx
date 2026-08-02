@@ -40,15 +40,17 @@ const ExperienceSection = () => {
 
         <div className="max-w-6xl mx-auto">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {items.map((exp, idx) => (
-              <div
-                key={idx}
-                className={`flex justify-center lg:items-start ${idx % 2 === 1 ? 'lg:justify-end' : 'lg:justify-start'}`}
-              >
-                <Card
-                  className="glass-card animate-fade-in-up h-full w-full max-w-md lg:max-w-none"
-                  style={{ animationDelay: `${idx * 100}ms` }}
+            {items.map((exp, idx) => {
+              const isLastCentered = idx === items.length - 1 && items.length % 2 === 1;
+              return (
+                <div
+                  key={idx}
+                  className={`flex justify-center lg:items-start ${isLastCentered ? 'lg:col-span-2' : idx % 2 === 1 ? 'lg:justify-end' : 'lg:justify-start'}`}
                 >
+                  <Card
+                    className={`glass-card animate-fade-in-up h-full w-full ${isLastCentered ? 'max-w-2xl' : 'max-w-md lg:max-w-none'}`}
+                    style={{ animationDelay: `${idx * 100}ms` }}
+                  >
                   <CardHeader className="pb-4">
                     <div className="flex items-start gap-3 mb-3">
                       <div
@@ -126,9 +128,10 @@ const ExperienceSection = () => {
                       ))}
                     </ul>
                   </CardContent>
-                </Card>
-              </div>
-            ))}
+                  </Card>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
