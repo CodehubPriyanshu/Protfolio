@@ -2,6 +2,8 @@
 // Deployed at /.netlify/functions/contact and reached by the frontend
 // through the /api/contact rewrite defined in netlify.toml / _redirects.
 
+import nodemailer from 'nodemailer';
+
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Credentials': true,
@@ -17,6 +19,36 @@ const respond = (statusCode, body) => ({
   },
   body: JSON.stringify(body),
 });
+
+const sendEmail = async ({ name, email, subject, message }) => {
+  const host = process.env.EMAIL_HOST;
+  const port = Number(process.env.EMAIL_PORT || 587);
+  const user = process.env.EMAIL_USER;
+  const pass = process.env.EMAIL_PASS;
+  const to = process.env.EMAIL_TO;
+
+  if (!user || !pass || !to) {
+    console.log('Email not configured, skipping send:', { name, email, subject, message });
+    return false;
+  }
+
+  const transporter = nodemailer.createTransport({
+    host,
+    port,
+    secure: port === 465,
+    auth: { user, pass },
+  });
+
+  await transporter.sendMail({
+    from: `"Portfolio Contact" <${user}>`,
+    to,
+    replyTo: email,
+    subject: `Portfolio Contact: ${subject}`,
+    text: `New contact form submission\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}\n\nReceived: ${new Date().toISOString()}`,
+  });
+
+  return true;
+};
 
 export const handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
@@ -56,7 +88,7 @@ export const handler = async (event) => {
       timestamp: new Date().toISOString(),
     });
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await sendEmail({ name, email, subject, message });
 
     return respond(200, {
       success: true,
