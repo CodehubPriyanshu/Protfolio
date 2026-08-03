@@ -54,7 +54,7 @@ const ProjectsSection = () => {
       description: "AI sentiment analysis app with React frontend, Flask backend, secure configs, and scalable deployment",
       techStack: ["React", "MongoDB Atlas", "flask", "Axios", "JWT Authentication"],
       githubUrl: "https://github.com/CodehubPriyanshu/SentimentSage",
-      liveUrl: "sentiment-sage42984.netlify.app/",
+      liveUrl: "https://sentiment-sage42984.netlify.app/",
       featured: true
     },
     {

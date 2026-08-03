@@ -4,6 +4,9 @@ export type Responsibility = {
   linkUrl?: string;
 };
 
+import cmLogo from "@/assets/cm logo.png";
+import atLogo from "@/assets/at-logo.png";
+
 export type Experience = {
   company: string;
   role: string;
@@ -49,9 +52,9 @@ export const experiences: Experience[] = [
       },
     ],
     location: "Hybrid, City Center Gwalior",
-    companyIcon: "src/assets/cm logo.png",
+    companyIcon: cmLogo,
     companyWebsite: "https://careermantra.net/",
-    iconSize: "md",
+    iconSize: "lg",
   },
   {
     company: "Agnistoka Technology",
@@ -77,7 +80,7 @@ export const experiences: Experience[] = [
       },
     ],
     location: "Hybrid, Gwalior, Madhya Pradesh, India",
-    companyIcon: "src/assets/at-logo.png",
+    companyIcon: atLogo,
     companyWebsite: "https://agnistokatechnology.com",
     iconSize: "lg",
   }
